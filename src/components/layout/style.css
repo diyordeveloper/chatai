@@ -1,0 +1,48 @@
+/* header ---------------------------------------- */
+
+:root {
+  --border: #eaeaea;
+  --bg: #72727d;
+  --txt: #333333;
+  --white: "#ffffff";
+}
+
+.navbar_ {
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 0 0 0;
+  border-bottom: 1px solid var(--border);
+}
+.tables_ {
+  display: flex;
+}
+.table_btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 44px;
+  border-radius: 4px 4px 0px 0px;
+  text-decoration: none;
+  color: var(--txt);
+}
+.table_btn span {
+  margin-left: 10px;
+  font-size: 14px;
+}
+.table_btn:hover {
+    
+}
+.table_btn:nth-child(2) {
+  margin-left: 8px;
+}
+.table_btn.active {
+  background: var(--bg);
+  border: 1px solid var(--bg);
+  color: var(--white) !important;
+}
+
+/* footer --------------------------------------- */
+.footer_ {
+  padding: 20px 0;
+}

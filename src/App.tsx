@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import styled from "styled-components";
+import Router from "./Router";
+import { ThemeContext } from "./components/ThemeProvider";
+import "bootstrap/dist/css/bootstrap.min.css";
+// style
+import "./assets/style/global.css";
+import "./assets/style/all.css";
 
 function App() {
+  const { COLORS } = useContext(ThemeContext);
+  const Theme = styled.body`
+    background: ${COLORS.bgColor};
+    color: ${COLORS.text};
+  `;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Theme>
+        <div className="app">
+          <Router />
+        </div>
+      </Theme>
+    </>
   );
 }
 
