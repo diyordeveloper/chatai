@@ -1,3 +1,18 @@
-.app{
-    height: 100vh;
+:root {
+  --bg: #72727d;
+  --border_light: #eaeaea;
+  --border_dark: #696b7b;
+  --df_txt: #333333;
+  --df_dark_txt: #d9d9de;
+}
+
+.app {
+  height: 100vh;
+}
+a {
+  color: #333333;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
 }

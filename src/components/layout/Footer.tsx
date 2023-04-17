@@ -4,7 +4,7 @@ import { ThemeContext } from "../ThemeProvider";
 function Footer() {
   const { toggleTheme } = useContext(ThemeContext);
   return (
-    <div className="container footer_">
+    <div className="footer_">
       <p className="text-center" onClick={toggleTheme}>
         powered by{" "}
         <a href="https://bot.co" target="_blank">

@@ -1,17 +1,20 @@
 /* header ---------------------------------------- */
-
 :root {
-  --border: #eaeaea;
   --bg: #72727d;
-  --txt: #333333;
-  --white: "#ffffff";
+  --border_light: #eaeaea;
+  --border_dark: #696b7b;
+  --df_txt: #333333;
+  --df_dark_txt: #d9d9de;
 }
 
 .navbar_ {
   display: flex;
   justify-content: space-between;
   padding: 32px 0 0 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border_light);
+}
+.nav_dark {
+  border-bottom: 1px solid var(--border_dark);
 }
 .tables_ {
   display: flex;
@@ -24,25 +27,97 @@
   padding: 10px 44px;
   border-radius: 4px 4px 0px 0px;
   text-decoration: none;
-  color: var(--txt);
+  border: 1px solid var(--border_light);
+  border-bottom: none;
 }
 .table_btn span {
   margin-left: 10px;
   font-size: 14px;
 }
-.table_btn:hover {
-    
+.light_btn:hover {
+  color: var(--df_txt);
+}
+.dark_btn:hover {
+  color: var(--df_dark_txt);
+}
+.dark_btn {
+  color: var(--df_dark_txt);
+  border-color: var(--border_dark);
 }
 .table_btn:nth-child(2) {
   margin-left: 8px;
 }
 .table_btn.active {
   background: var(--bg);
-  border: 1px solid var(--bg);
-  color: var(--white) !important;
+  border-color: var(--bg);
+  color: #fff;
+}
+/*header =>  setings btn */
+.btns_ {
+}
+.btns_ .stng_btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px 8px 20px;
+  border-radius: 4px;
+  border: 1px solid var(--border_light);
+}
+.btns_ .stng_btn_dark {
+  border: 1px solid var(--border_dark);
+}
+.add_chat_dev {
+  display: none;
+}
+.add_new_chat {
+  margin: 0 8px 0 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px 8px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid var(--border_light);
+  border-bottom: none;
+}
+.add_new_chat span {
+  margin-left: 10px;
+  font-size: 14px;
+}
+.add_new_chat.dark_btn {
+  border: 1px solid var(--border_dark);
 }
 
 /* footer --------------------------------------- */
 .footer_ {
   padding: 20px 0;
+}
+.footer_ p {
+  margin-bottom: 0;
+}
+.footer_ a {
+  color: #0d6efd;
+}
+
+@media screen and (max-width: 576px) {
+  .footer_ {
+    padding: 8px 16px;
+  }
+  .table_btn {
+    padding: 14px;
+  }
+  .btns_ .stng_btn {
+    padding: 10px;
+  }
+  .add_new_chat {
+    padding: 10px;
+  }
+  .table_btn span {
+    display: none;
+  }
+  .add_chat_dev {
+    display: block;
+  }
 }
