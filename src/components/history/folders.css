@@ -1,0 +1,316 @@
+:root {
+  --bg: #72727d;
+  --border_light: #eaeaea;
+  --border_dark: #696b7b;
+  --df_txt: #333333;
+  --df_dark_txt: #d9d9de;
+  --mini_text: #9393a4;
+  --hover_gray: #e2e2ec;
+  --active_bg: #5a5c6d;
+  --primary_bg: #f9f9f9;
+  --primary_bg_dark: #444654;
+  --h1: #2d2d2d;
+  --elements_gray: #d9d9e3;
+  --dedede: #dedede;
+  --f3f3f3: #f3f3f3;
+  --b6b6: #b6b6ce;
+  --f9f9: #f9f9f9;
+  --3434: #343541;
+}
+/*  */
+.folder_screen{
+  overflow-y: scroll;
+  height: calc(70vh - -60px);
+}
+/* width */
+::-webkit-scrollbar {
+  width:   5px;
+} 
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--f3f3f3);
+  border-radius: 4px;
+} 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--border_light);
+  border-radius: 4px;
+  cursor: pointer;
+} 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hover_gray);
+}
+/* dark scroll -------------------*/
+/* Track */
+.folder_dark::-webkit-scrollbar-track {
+  background: var(--primary_bg_dark);
+  border-radius: 4px;
+} 
+/* Handle */
+.folder_dark::-webkit-scrollbar-thumb {
+  background: var(--active_bg);
+  border-radius: 4px;
+  cursor: pointer;
+} 
+/* Handle on hover */
+.folder_dark::-webkit-scrollbar-thumb:hover {
+  background: var(--hover_gray);
+}
+/* folders-dropdown ----------------- */
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 8px 0;
+}
+.accordion_header {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--f3f3f3);
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--border_light);
+}
+.accordion_header_active {
+  background: var(--hover_gray);
+}
+.box_ {
+  display: flex;
+  align-items: center;
+}
+.vector_icon {
+  transform: rotate(-90deg);
+  margin-right: 12px;
+}
+.trash_icon {
+  margin-right: 12px;
+  transition: 0.2s;
+}
+.delete_txt {
+  margin-right: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  color: var(--df_txt);
+}
+.vector_icon_rotate {
+  transform: rotate(0);
+  transition: 0.2s;
+}
+.vector_icon_rotate_clear {
+  transform: rotate(-90deg);
+  transition: 0.2s;
+}
+.file_icon {
+  margin: 0 10px 0 0px;
+  width: 25px;
+}
+.box_:nth-child(1) {
+  width: 100%;
+  margin-right: 10px;
+}
+.f_title {
+  width: 100%;
+}
+.box_ .f_title span {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  color: var(--df_txt);
+}
+.f_title .f_title_range {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 2px;
+  padding: 4px 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  color: var(--df_txt);
+}
+.btn_crd {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.btn_crd img {
+  width: 22px;
+}
+.accordion_header .btn_crd:nth-child(1) {
+  margin-right: 15px;
+}
+/* accordion_body */
+.accordion_body {
+  margin-top: 5px;
+  border: 1px solid var(--border_light);
+  border-radius: 4px;
+  display: none;
+  transition: 1s;
+  opacity: 0;
+}
+.accordion_body .menu_folders .menu_ {
+  z-index: 11;
+}
+.accordion_body_active {
+  display: block;
+  opacity: 1;
+}
+.folder_dark .accordion_header {
+  background: var(--primary_bg_dark);
+  border-color: var(--primary_bg_dark);
+}
+.folder_dark .accordion_body {
+  border-color: var(--border_dark);
+}
+.folder_dark  .item {
+  border-color: var(--border_dark);
+}
+.folder_dark  .item .itm_title_,
+.folder_dark  .item .times .time {
+  color: var(--df_dark_txt);
+}
+.folder_dark .f_title span {
+  color: var(--df_dark_txt);
+}
+.folder_dark .item .f_title_range {
+  background: var(--3434);
+  color: var(--df_dark_txt);
+  border-color: var(--border_dark);
+}
+.folder_dark .accordion_header .f_title_range {
+  background: var(--3434);
+  color: var(--df_dark_txt);
+  border-color: var(--border_dark);
+}
+.folder_dark .accordion_header .delete_txt {
+  color: var(--df_dark_txt);
+}
+.folder_dark .accordion_header_active {
+  background: var(--active_bg);
+}
+
+.folder_dark .item .menu_folders .menu_
+{
+  background: var(--primary_bg_dark);
+  border-color: var(--border_dark);
+}
+.folder_dark .item .menu_folders .menu_ li span
+{
+  color: var(--df_dark_txt);
+}
+.folder_dark .item .menu_ li:hover,.Feedback_items .item .menu_ li:hover {
+  background: var(--active_bg);
+}
+
+/* ItemFolder ----- */
+
+.item {
+  margin: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--border_light);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.item_active {
+  border: 1px solid var(--b6b6);
+}
+.itm_box {
+  display: flex;
+  align-items: center;
+}
+.itm_box:nth-child(1) {
+  margin-right: 12px;
+  width: 100%;
+  flex-direction: row;
+}
+.itm_box .btn_crd:nth-child(1),
+.itm_box .btn_crd:nth-child(2) {
+  margin-right: 15px;
+}
+.itm_box .times {
+  display: flex;
+}
+.itm_box .times .time {
+  color: var(--mini_text);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+}
+.itm_box .times .time {
+  margin-right: 10px;
+}
+.itm_box .times .time:nth-child(1) {
+  width: 80px;
+}
+.itm_box .times .time:nth-child(2) {
+  width: 65px;
+}
+.itm_box .itm_title_ {
+  color: var(--df_txt);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+}
+.itm_box .f_title_range {
+  width: 100%;
+  border-radius: 2px;
+  padding: 4px 10px;
+  border: none;
+  outline: none;
+  border: 1px solid var(--border_light);
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  color: var(--df_txt);
+}
+
+/* Feedback Items ---------- */
+.Feedback_items {
+  margin: 20px 0;
+}
+.Feedback_items .item {
+  margin: 8px 0;
+}
+.menu_folders {
+  position: relative;
+}
+.menu_ {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  background: var(--f9f9);
+  border: 1px solid var(--border_light);
+  border-radius: 4px;
+  padding: 8px 0px;
+  list-style: none;
+  width: 245px;
+  z-index: 8;
+}
+.menu_ li {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.menu_ li:hover {
+  background: var(--hover_gray);
+}
+.menu_ li img {
+  margin-right: 12px;
+}
+
+.menu_ li span {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  color: var(--df_txt);
+}

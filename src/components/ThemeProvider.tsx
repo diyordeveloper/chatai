@@ -22,6 +22,7 @@ export const ThemeProvider = ({ children }: Props) => {
     if (localStorage.getItem("theme") == null) {
       // @ts-ignore
       setDarkMode((prev) => !prev);
+      // audio
       localStorage.setItem("theme", "dark");
       const audio = new Audio(SwitchClick);
       audio.play();
@@ -29,6 +30,7 @@ export const ThemeProvider = ({ children }: Props) => {
       localStorage.removeItem("theme");
       // @ts-ignore
       setDarkMode((prev) => !prev);
+      // audio
       const audio = new Audio(SwitchButton);
       audio.play();
     }

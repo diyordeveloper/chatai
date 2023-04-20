@@ -1,0 +1,92 @@
+:root {
+  --bg: #72727d;
+  --border_light: #eaeaea;
+  --border_dark: #696b7b;
+  --df_txt: #333333;
+  --df_dark_txt: #d9d9de;
+  --mini_text: #9393a4;
+  --hover_gray: #e2e2ec;
+  --active_bg: #5a5c6d;
+  --primary_bg: #f9f9f9;
+  --primary_bg_dark: #444654;
+  --h1: #2d2d2d;
+  --elements_gray: #d9d9e3;
+  --dedede: #dedede;
+}
+
+/* add new folter button ------------ */
+.add_new_btn {
+  border: 1px solid var(--border_light);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  cursor: pointer;
+  margin: 16px 0 22px 0;
+  background: transparent;
+}
+.add_new_btn span {
+  margin-left: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  color: var(--df_txt);
+}
+.add_new_btn.add_new_btn_dark {
+  border-color: var(--border_dark);
+}
+.add_new_btn_dark span {
+  color: var(--df_dark_txt);
+}
+@media screen and (max-width: 576px) {
+  .add_new_btn {
+    margin: 16px 0;
+  }
+}
+/* Empty ----------------- */
+.empty_ {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  width: 100%;
+}
+.em_center_ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.em_center_ img {
+  width: 120px;
+}
+
+.em_center_ span {
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.04em;
+  color: var(--mini_text);
+  margin: 42px 0;
+}
+@media screen and (max-width: 576px) {
+  .em_center_ span {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+/* ftr ------ */
+.ftr {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+@media screen and (max-width: 576px) {
+  .ftr {
+    display: none;
+  }
+}
+ 
