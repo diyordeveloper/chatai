@@ -9,6 +9,8 @@
   --active_bg: #5a5c6d;
   --primary_bg: #f9f9f9;
   --primary_bg_dark: #444654;
+  --success: #219653;
+  --success_hover: #2eba6a;
 }
 
 /* Select ------------------------------- */
@@ -51,13 +53,13 @@
 .options-container {
   background: #fff;
   position: absolute;
-  top: 42px;
+  top: 38px;
   left: -1px;
   border: 1px solid var(--border_light);
   border-top: none;
   border-radius: 0 0 8px 8px;
   margin: 6px 0;
-  width: 100.4%;
+  width: 100.5%;
   padding: 6px 12px;
 }
 .border_n {
@@ -71,7 +73,6 @@
   width: 100%;
   background: var(--border_light);
   height: 1px;
-  margin-bottom: 6px;
 }
 .option_div.opt_active {
   background: var(--hover_gray);
@@ -113,7 +114,7 @@
   }
   .options-container {
     left: -1px;
-    width: 100.5%;
+    width: 100.6%;
   }
 }
 /*Suggestions ------------------------------- */
@@ -122,6 +123,9 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+.suggections_mob {
+  display: none;
 }
 .block_ {
   border: 1px solid var(--border_light);
@@ -164,12 +168,12 @@
   width: 100%;
 }
 .block_two {
-  border: 1px solid #219653;
+  border: 1px solid var(--success);
   background: var(--primary_bg);
 }
 .btn_update {
   border: none;
-  background: #219653;
+  background: var(--success);
   border-radius: 4px;
   padding: 12px;
   outline: none;
@@ -177,6 +181,10 @@
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.04em;
+  transition: 0.2s;
+}
+.btn_update:hover {
+  background: var(--success_hover);
 }
 .sgstn_dark .title_ {
   color: var(--df_dark_txt);
@@ -209,7 +217,18 @@
 .suggections_mob .swiper-slide .block_ {
   height: 270px !important ;
 }
+@media screen and (max-width: 992px) {
+  .suggections {
+    margin-top: 40px;
+  }
+}
 @media screen and (max-width: 576px) {
+  .suggections_mob {
+    display: block;
+  }
+  .suggections_desktop {
+    display: none;
+  }
   .suggections {
     margin-top: 32px;
   }
@@ -221,6 +240,49 @@
   left: 0;
   right: 0;
   margin: 0 auto;
+}
+
+.generate_btns_ {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  justify-content: center;
+}
+.generate_btns_ .btn_gnrt {
+  background: #ffffff;
+  border: 1px solid var(--border_light);
+  border-radius: 4px;
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.Submit_dev_dark .generate_btns_ .btn_gnrt {
+  border-color: var(--border_dark);
+  background: #343541;
+}
+.Submit_dev .submit_ {
+  padding-top: 10px;
+  background: #fff;
+}
+.Submit_dev_dark .submit_ {
+  background: #343541;
+  padding-top: 10px;
+}
+.generate_btns_ .btn_gnrt span {
+  margin-left: 12px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  color: var(--df_txt);
+}
+.Submit_dev_dark .generate_btns_ .btn_gnrt span {
+  color: var(--df_dark_txt);
+}
+.generate_btns_ .btn_gnrt:hover {
+  background: var(--hover_gray);
+}
+.Submit_dev_dark .generate_btns_ .btn_gnrt:hover {
+  background: var(--active_bg);
 }
 .chat_block {
   display: flex;
@@ -234,6 +296,43 @@
   border: 1px solid var(--border_light);
   cursor: pointer;
   border-radius: 4px;
+  transition: 0.2s;
+}
+.add_chat:hover {
+  background: var(--hover_gray);
+}
+.render_btns {
+  display: none;
+}
+.render_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--border_light);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.2s;
+  margin-left: 4px;
+}
+.stop_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--border_light);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.2s;
+  margin-left: 4px;
+}
+
+.Submit_dev_dark .add_chat:hover {
+  background: var(--active_bg);
+}
+.Submit_dev_dark .render_btn:hover,
+.Submit_dev_dark .stop_btn:hover {
+  background: var(--active_bg);
 }
 .add_chat span {
   color: var(--df_txt);
@@ -274,7 +373,9 @@
 
 .Submit_dev_dark .send_,
 .Submit_dev_dark .add_chat,
-.Submit_dev_dark .msg_ {
+.Submit_dev_dark .msg_,
+.Submit_dev_dark .render_btn,
+.Submit_dev_dark .stop_btn {
   border-color: var(--border_dark);
 }
 .Submit_dev_dark .msg_,
@@ -282,11 +383,11 @@
   color: var(--df_dark_txt);
 }
 @media screen and (max-width: 576px) {
-  .Submit_dev {
+  .submit_ {
     border-top: 1px solid var(--border_light);
-    padding-top: 8px;
+    /* padding-top: 8px; */
   }
-  .Submit_dev_dark {
+  .Submit_dev_dark .submit_ {
     border-top: 1px solid var(--border_dark);
   }
   .add_chat {
@@ -297,5 +398,11 @@
   }
   .send_msg .msg_ {
     padding: 14px 8px;
+  }
+  .render_btns {
+    display: block;
+  }
+  .generate_btns_ {
+    display: none;
   }
 }

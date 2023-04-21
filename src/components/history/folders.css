@@ -18,45 +18,11 @@
   --3434: #343541;
 }
 /*  */
-.folder_screen{
+.folder_screen {
   overflow-y: scroll;
-  height: calc(70vh - -60px);
+  height: calc(70vh - -40px);
 }
-/* width */
-::-webkit-scrollbar {
-  width:   5px;
-} 
-/* Track */
-::-webkit-scrollbar-track {
-  background: var(--f3f3f3);
-  border-radius: 4px;
-} 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: var(--border_light);
-  border-radius: 4px;
-  cursor: pointer;
-} 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--hover_gray);
-}
-/* dark scroll -------------------*/
-/* Track */
-.folder_dark::-webkit-scrollbar-track {
-  background: var(--primary_bg_dark);
-  border-radius: 4px;
-} 
-/* Handle */
-.folder_dark::-webkit-scrollbar-thumb {
-  background: var(--active_bg);
-  border-radius: 4px;
-  cursor: pointer;
-} 
-/* Handle on hover */
-.folder_dark::-webkit-scrollbar-thumb:hover {
-  background: var(--hover_gray);
-}
+ 
 /* folders-dropdown ----------------- */
 
 .accordion {
@@ -168,11 +134,11 @@
 .folder_dark .accordion_body {
   border-color: var(--border_dark);
 }
-.folder_dark  .item {
+.folder_dark .item {
   border-color: var(--border_dark);
 }
-.folder_dark  .item .itm_title_,
-.folder_dark  .item .times .time {
+.folder_dark .item .itm_title_,
+.folder_dark .item .times .time {
   color: var(--df_dark_txt);
 }
 .folder_dark .f_title span {
@@ -195,16 +161,14 @@
   background: var(--active_bg);
 }
 
-.folder_dark .item .menu_folders .menu_
-{
+.folder_dark .item .menu_folders .menu_ {
   background: var(--primary_bg_dark);
   border-color: var(--border_dark);
 }
-.folder_dark .item .menu_folders .menu_ li span
-{
+.folder_dark .item .menu_folders .menu_ li span {
   color: var(--df_dark_txt);
 }
-.folder_dark .item .menu_ li:hover,.Feedback_items .item .menu_ li:hover {
+.folder_dark .item .menu_ li:hover {
   background: var(--active_bg);
 }
 
@@ -285,7 +249,7 @@
 .menu_ {
   position: absolute;
   top: 28px;
-  left: 0;
+  right: 0;
   background: var(--f9f9);
   border: 1px solid var(--border_light);
   border-radius: 4px;
@@ -313,4 +277,24 @@
   line-height: 20px;
   letter-spacing: -0.04em;
   color: var(--df_txt);
+}
+
+@media screen and (max-width: 576px) { 
+  .item {
+    margin: 4px;
+  }
+  .item .itm_box:nth-child(1) {
+    flex-direction: column;
+    align-items: start;
+  }
+  .item .itm_box .menu_folders .btn_crd {
+    margin-right: 12px;
+  }
+  .item .itm_box .btn_crd:nth-child(2) {
+    margin-right: 12px;
+  }
+  .box_ .btn_crd:nth-child(1) {
+    margin-right: 12px;
+
+  }
 }

@@ -11,16 +11,22 @@ function Settings() {
   const [temperature_high, setTemperature_High] = useState("0.8");
   const [topk_high, setTopK_High] = useState("40");
   function SaveChanges() {
-    navigate("/");
+    navigate(-1);
   }
   return (
     <>
       <>
         <div className={`container header_ ${darkMode ? "h_dark" : ""}`}>
           <span className="title_">Settings</span>
-          <Link to={"/"}>
-            <img src={CloseIcon} className="close_" alt="Error!" />
-          </Link>
+          <div>
+            <img
+              src={CloseIcon}
+              onClick={SaveChanges}
+              className="close_ "
+              style={{ cursor: "pointer" }}
+              alt="Error!"
+            />
+          </div>
         </div>
         <div className={`container body_dev ${darkMode ? "b_dark" : ""}`}>
           <div className="mode_row">

@@ -10,7 +10,7 @@ import "./assets/style/global.css";
 import "./assets/style/all.css";
 
 function App() {
-  const { COLORS } = useContext(ThemeContext);
+  const { COLORS, darkMode } = useContext(ThemeContext);
   const Theme = styled.body`
     background: ${COLORS.bgColor};
     color: ${COLORS.text} !important;
@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <Theme>
-        <div className="app">
+        <div className={`app ${darkMode ? "app_dark" : ""}`}>
           <Router />
         </div>
       </Theme>

@@ -7,15 +7,18 @@ import ClockCounterClockwiseLight from "../../assets/icons/light/ClockCounterClo
 import PlusCircleLight from "../../assets/icons/light/PlusCircle.svg";
 import { NavLink, useLocation } from "react-router-dom";
 import { ThemeContext } from "../ThemeProvider";
+import { ChatContext } from "../chat/ChatProvider";
 
 function Header() {
+  const { NewChat } = useContext(ChatContext);
+
   const { darkMode } = useContext(ThemeContext);
   var location = useLocation();
   var pathname = location.pathname;
 
   return (
-    <>
-      <div className="container ">
+    <div className={` headerr_ ${darkMode ? "headerr_dark" : ""}`}>
+      <div className={`container`}>
         <div className={`navbar_ ${darkMode ? "nav_dark" : "nav_light"}`}>
           <div className="tables_">
             <NavLink
@@ -43,13 +46,17 @@ function Header() {
               <span>History</span>
             </NavLink>
             <div className="add_chat_dev">
-            <NavLink
-              to={"/"}
-              className={`add_new_chat ${darkMode ? "dark_btn" : "light_btn"}`}
-            >
-              <img src={PlusCircleLight} alt="Error" />
-              <span>New </span><span>chat</span>
-            </NavLink>
+              <NavLink
+                onClick={NewChat}
+                to={"/"}
+                className={`add_new_chat ${
+                  darkMode ? "dark_btn" : "light_btn"
+                }`}
+              >
+                <img src={PlusCircleLight} alt="Error" />
+                <span>New </span>
+                <span>chat</span>
+              </NavLink>
             </div>
           </div>
           <div className="btns_">
@@ -64,7 +71,7 @@ function Header() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -66,7 +66,11 @@ function FeedbackItem({ item, index }: any) {
           </div>
           {changeFolderName ? (
             <>
-              <span className="itm_title_">{item.you}</span>
+              {item.you.length > 20 ? (
+                <span>{item.you.substring(0, 20)}...</span>
+              ) : (
+                <span className="itm_title_">{item.you}</span>
+              )}
             </>
           ) : (
             <input

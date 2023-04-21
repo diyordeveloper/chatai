@@ -4,10 +4,23 @@
   --border_dark: #696b7b;
   --df_txt: #333333;
   --df_dark_txt: #d9d9de;
+  --mini_text: #9393a4;
+  --hover_gray: #e2e2ec;
+  --active_bg: #5a5c6d;
+  --primary_bg: #f9f9f9;
+  --primary_bg_dark: #444654;
+  --h1: #2d2d2d;
+  --elements_gray: #d9d9e3;
+  --dedede: #dedede;
+  --f3f3f3: #f3f3f3;
+  --b6b6: #b6b6ce;
+  --f9f9: #f9f9f9;
+  --3434: #343541;
 }
 
 .app {
   height: 100vh;
+  overflow-y: scroll;
 }
 a {
   color: #333333;
@@ -15,4 +28,45 @@ a {
 .swiper {
   width: 100%;
   height: 100%;
+}
+
+
+/* scroll style --- */ 
+/* width */
+::-webkit-scrollbar {
+  width: 0px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--f3f3f3);
+  border-radius: 4px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--border_light);
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hover_gray);
+}
+/* dark scroll -------------------*/
+/* Track */
+.app_dark::-webkit-scrollbar-track 
+{
+  background: var(--primary_bg_dark);
+  border-radius: 4px;
+}
+/* Handle */
+.app_dark::-webkit-scrollbar-thumb 
+{
+  background: var(--active_bg);
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* Handle on hover */
+.app_dark::-webkit-scrollbar-thumb:hover 
+{
+  background: var(--hover_gray);
 }

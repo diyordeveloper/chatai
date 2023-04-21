@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import Layout from "../layout/Layout";
-import Select from "./Select";
 import "./style.css";
 import Suggestions from "./Suggestions";
 import SubmitText from "./SubmitText";
+import NewChat from "./NewChat";
+import { ChatContext } from "./ChatProvider";
+
 function Chat() {
+  const { newChatBolean } = useContext(ChatContext);
   return (
     <>
       <Layout>
-        <Select />
-        <Suggestions />
+        {newChatBolean ? <NewChat /> : <Suggestions />}
         <SubmitText />
       </Layout>
     </>

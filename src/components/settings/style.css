@@ -80,7 +80,8 @@
   transform: translateX(0);
 }
 /*  */
-.hr_ {
+.low_temp .hr_,
+.high_temp .hr_ {
   margin: 10px 0;
 }
 .b_dark .hr_ {
@@ -159,4 +160,8 @@
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.04em;
+  transition: 0.2s; 
+}
+.footer_dev .btn_update:hover{
+  /* background: var(--hover_gray); */
 }

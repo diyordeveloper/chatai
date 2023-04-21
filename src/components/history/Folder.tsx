@@ -12,11 +12,8 @@ import ItemFolder from "./ItemFolder";
 import FeedbackItem from "./FeedbackItem";
 import { HistoryContext } from "./HistoryProvider";
 function Folder({ folder, index }: any) {
-  const {
-    DeleteFolderSuccess,
-    ChangeNameSuccessFolder,
-    setChangeFolderName,
-  } = useContext(HistoryContext);
+  const { DeleteFolderSuccess, ChangeNameSuccessFolder, setChangeFolderName } =
+    useContext(HistoryContext);
   const { darkMode } = useContext(ThemeContext);
   const [activeIndex, setActiveIndex] = useState(1);
   const [bgActive, setBgActive] = useState(1);
@@ -60,7 +57,10 @@ function Folder({ folder, index }: any) {
 
   return (
     <>
-      <div className={`accordion ${darkMode ? 'accordion_dark':''}`} key={index}>
+      <div
+        className={`accordion ${darkMode ? "accordion_dark" : ""}`}
+        key={index}
+      >
         <div
           className={`accordion_header ${
             bgActive === folder.id ? "accordion_header_active" : ""
@@ -97,10 +97,36 @@ function Folder({ folder, index }: any) {
             <div className="f_title">
               {changeFolderNameBoolean ? (
                 <>
-                  {deleteFolder ? (
-                    <span>{folder.f_title}</span>
+                  {window.screen.width <= 576 ? (
+                    <>
+                      {deleteFolder ? (
+                        <>
+                          {folder.f_title.length > 20 ? (
+                            <span>{folder.f_title.substring(0, 20)}...</span>
+                          ) : (
+                            <span>{folder.f_title}</span>
+                          )}
+                        </>
+                      ) : (
+                        <>
+                          {folder.f_title.length > 20 ? (
+                            <span>
+                              "{folder.f_title.substring(0, 20)}..." ?
+                            </span>
+                          ) : (
+                            <span>"{folder.f_title}" ?</span>
+                          )}
+                        </>
+                      )}
+                    </>
                   ) : (
-                    <span>"{folder.f_title}" ?</span>
+                    <>
+                      {deleteFolder ? (
+                        <span>{folder.f_title}</span>
+                      ) : (
+                        <span>"{folder.f_title}" ?</span>
+                      )}
+                    </>
                   )}
                 </>
               ) : (
@@ -161,7 +187,7 @@ function Folder({ folder, index }: any) {
           }`}
         >
           {folder.items.map((item: any, idx: any) => (
-            <ItemFolder folderIndex={index}  item={item} idx={idx} />
+            <ItemFolder folderIndex={index} item={item} idx={idx} />
           ))}
         </div>
       </div>
