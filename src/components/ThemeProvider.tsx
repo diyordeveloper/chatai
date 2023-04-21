@@ -1,7 +1,5 @@
 import React, { ReactNode, createContext, useState, useEffect } from "react";
-import { DARK_THEME, LIGHT_THEME } from "./colors";
-import SwitchClick from "../assets/SwitchClick.mp3";
-import SwitchButton from "../assets/SwitchButton.mp3";
+import { DARK_THEME, LIGHT_THEME } from "./colors"; 
 interface ThemeContextProps {
   darkMode: any;
   COLORS: any;
@@ -21,18 +19,12 @@ export const ThemeProvider = ({ children }: Props) => {
   const toggleTheme = () => {
     if (localStorage.getItem("theme") == null) {
       // @ts-ignore
-      setDarkMode((prev) => !prev);
-      // audio
-      localStorage.setItem("theme", "dark");
-      const audio = new Audio(SwitchClick);
-      audio.play();
+      setDarkMode((prev) => !prev); 
+      localStorage.setItem("theme", "dark"); 
     } else {
       localStorage.removeItem("theme");
       // @ts-ignore
-      setDarkMode((prev) => !prev);
-      // audio
-      const audio = new Audio(SwitchButton);
-      audio.play();
+      setDarkMode((prev) => !prev); 
     }
   };
   let COLORS = darkMode ? DARK_THEME : LIGHT_THEME;

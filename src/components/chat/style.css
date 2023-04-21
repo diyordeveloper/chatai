@@ -68,6 +68,11 @@
 }
 .option_div {
   padding: 6px 8px;
+  transition: 0.2s;
+  border-radius: 4px;
+}
+.option_div:hover {
+  background: var(--hover_gray);
 }
 .hr_ {
   width: 100%;
@@ -76,7 +81,6 @@
 }
 .option_div.opt_active {
   background: var(--hover_gray);
-  border-radius: 4px;
 }
 
 .darkSelect {

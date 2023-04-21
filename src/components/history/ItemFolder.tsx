@@ -72,6 +72,7 @@ function ItemFolder({ folderIndex, item, idx }: any) {
           </div>
           {changeFolderName ? (
             <>
+            
               {item.you.length > 15 ? (
                 <span>{item.you.substring(0, 15)}...</span>
               ) : (

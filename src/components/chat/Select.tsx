@@ -9,8 +9,8 @@ const options = [
 ];
 function Select() {
   const { darkMode } = useContext(ThemeContext);
-  const [selectedOption, setSelectedOption] = useState("");
-  const [showOptions, setShowOptions] = useState(false);
+  const [selectedOption, setSelectedOption] = useState({ id: 3, value: "Some Model Name 3" });
+  const [showOptions, setShowOptions] = useState(true);
 
   const handleToggleOptions = () => {
     setShowOptions(!showOptions);
@@ -33,7 +33,7 @@ function Select() {
               <span className="model_">Model</span>
               <span className="option_">
                 {/* @ts-ignore */}
-                {selectedOption ? selectedOption.value : "Model Name"}
+                {selectedOption ? selectedOption.value : "Some Model Name 3"}
               </span>
             </span>
             <img
