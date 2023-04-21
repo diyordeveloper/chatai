@@ -65,13 +65,21 @@ function FeedbackItem({ item, index }: any) {
             <span className="time">{item.timestamp.substr(-8)}</span>
           </div>
           {changeFolderName ? (
-            <>
-              {item.you.length > 20 ? (
-                <span>{item.you.substring(0, 20)}...</span>
-              ) : (
-                <span className="itm_title_">{item.you}</span>
-              )}
-            </>
+             <>
+             {window.screen.width <= 576 ? (
+               <>
+                 {item.you.length > 15 ? (
+                   <span>{item.you.substring(0, 15)}...</span>
+                 ) : (
+                   <span className="itm_title_">{item.you}</span>
+                 )}
+               </>
+             ) : (
+               <>
+                 <span className="itm_title_">{item.you}</span>
+               </>
+             )}
+           </>
           ) : (
             <input
               type="text"
