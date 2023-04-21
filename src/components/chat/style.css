@@ -74,6 +74,9 @@
 .option_div:hover {
   background: var(--hover_gray);
 }
+.darkSelect .option_div:hover {
+  background: var(--active_bg);
+}
 .hr_ {
   width: 100%;
   background: var(--border_light);
