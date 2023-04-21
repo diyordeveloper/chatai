@@ -212,7 +212,7 @@
   justify-content: inherit;
 }
 .suggections_mob .swiper-slide {
-  width: 212px !important;
+  width: 100% !important;
 }
 .suggections_mob .swiper-slide .block_ {
   height: 270px !important ;

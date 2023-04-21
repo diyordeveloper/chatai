@@ -15,16 +15,7 @@ function Suggestions() {
             darkMode ? "sgstn_dark" : ""
           }`}
         >
-          <Swiper
-            slidesPerView={4}
-            spaceBetween={15}
-            grabCursor={true}
-            pagination={{
-              clickable: true,
-            }}
-          >
-            <SwiperSlide>
-              <div className="block_ block_two">
+          <div className="block_ block_two">
                 <div className="icon_">
                   <img src={Congratulations} alt="Error" />
                 </div>
@@ -39,40 +30,6 @@ function Suggestions() {
                   <button className="btn_update">Update now</button>
                 </div>
               </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              {" "}
-              <div className="block_">
-                <div className="icon_">
-                  <img src={Hey} alt="Error" />
-                </div>
-                <div className="texts_">
-                  <span className="title_">Hello!</span>
-                  <p className="body_">
-                    Enter your query in the chat, and I will try to provide you
-                    with the best answer.
-                  </p>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="block_">
-                <div className="smile_">💡</div>
-                <div className="texts_">
-                  <span className="title_">Want to learn more?</span>
-                  <p className="body_">
-                    Type your question in the chat, and I will try to give you
-                    the most useful answer.
-                  </p>
-                </div>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide></SwiperSlide>
-            <SwiperSlide></SwiperSlide>
-            <SwiperSlide></SwiperSlide>
-            <SwiperSlide></SwiperSlide>
-            <SwiperSlide></SwiperSlide>
-          </Swiper>
         </div>
         <div
           className={`suggections suggections_desktop  ${
