@@ -61,13 +61,18 @@
 }
 .blok_two img:hover {
   transform: scale(1.1);
+  background: var(--hover_gray); 
+}
+.new_chat_dark .blok_two img:hover {
+  transform: scale(1.1);
+  background: var(--active_bg); 
 }
 
 .blok_two .like {
   margin-right: 12px;
 }
 .blok_two .active_class {
-  background: var(--hover_gray); 
+  /* background: var(--bg);  */
 }
 
 .blok_one {
@@ -93,7 +98,5 @@
   color: var(--df_dark_txt);
 }
 .new_chat_dark .blok_two .active_class {
-  padding: 4px;
-  background: var(--active_bg);
-  border-radius: 2px;
+   
 }
