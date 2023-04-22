@@ -163,8 +163,10 @@
   color: var(--df_txt);
 }
 .texts_ .body_ {
+  font-family: NotoSansRegular;
   margin-top: 16px;
   line-height: 20px;
+  font-size: 14px;
   letter-spacing: -0.04em;
   color: var(--df_txt);
 }
