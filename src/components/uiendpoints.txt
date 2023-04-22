@@ -1,0 +1,130 @@
+ENDPOINTS FOR BOT.CO CHAT SITE
+
+Currently missing:
+1. How to use "search" functionality both in javascript and what to for that with infer
+2. Endpoints for getting cards to display
+3. Endpoints for update (both for detecting when to update and when /update should be called)
+
+---------------
+
+All responses are json objects, and include a success or failure.
+If success=false for any that return json then display the "error" field to the user in an error message.
+
+---------------
+
+The following do not need authorization:
+
+GET /sessionstart
+When the page loads, connect to /sessionstart to begin the session. It returns a token string which is then used for all future communication.
+Response: {"success":true, "token":"abc123"}
+Error: {"success":false, "error":"Too many sessions."}
+If it returns success:false then only history and settings are accessible.
+
+GET /getsettings
+Returns the settings file. The settings input boxes should be made from the settings file.
+Example of 2 settings: {"input1":"value1", "input2":"value2}
+Examples of an input box and then 2 "groups" each with 3 input boxes (like we did on the design):
+{
+"input1":"value1",
+"group":["test":"value", "test":"value", "test":"value"]
+"group2":["test":"value", "test":"value", "test":"value"]
+}
+There will only be either input boxes or groups with input boxes. There are never groups inside groups or other kinds of inputs.
+
+POST /settings
+The body is exactly the same format of json as returned by getsettings.
+Response: {"success":true}
+Error: {"success":false, "error":"Something"}
+
+GET /listmodels
+Get a list of all available models in json format. This is used for the dropdown list of models. You only need to get this once after sessionstart
+Response: {"success":true, "models":[{"id":"abc", "name":"Basic Model", "description":"something"}, {"id":"model2", "name":"Model2", "description":"something"}]}
+Error: {"success":false, "error":"Something"}
+
+GET /history
+Returns JSON object of all folders and conversation names and datetimes, to be displayed
+{
+"folders":[{id:"Organized"}, {id:"To Do"}]},
+"files":[{"id":"20230419 114405 What color is the sky", "folder":null}, {"id":"20230419 135438 Where is Waldo", "folder":"To Do"}]
+}
+
+POST /view
+This gets a conversation from history and returns the conversation. To specify which conversation to get, the POST vars should be the id and folder of the conversation (as returned by /history)
+POST VARS: id: "20230419 135438 Where is Waldo", folder: "To Do"
+
+GET /update
+Requests for an update
+Response: {"success":true}
+Error: {"success":false, "error":"No Internet connection"}
+
+POST /rename
+This is for renaming a history conversation or folder. If it is a folder then the id is the folder name and the "folder" var is null. If it's a conversation the id is the conversation name and the "folder"
+POST VARS: id: "20230419 135438 Where is Waldo", folder: null
+Response: {"success":true}
+Error: {"success":false, "error":"This name already exists"}
+
+POST /mkdir
+This is for creating a new folder in history
+Response: {"success":true}
+Error: {"success":false, "error":"This name already exists"}
+
+POST /rmdir
+This is for deleting a folder in history. Folder must be empty to delete.
+Response: {"success":true}
+Error: {"success":false, "error":"Folder should be empty before deleting."}
+
+---------------
+
+The following need authorization, which is the sessionid returned by /sessionstart
+sessionid (obtained from /sessionstart) is included in the header of all POST endpoints using the "Authorization: Bearer sessionid" header.
+
+GET /ping
+When not inferring, every 15 seconds ping this to keep the session open to the hosting application. The hosting application will automatically close the session if it does not receive a ping in 45 seconds. Pause this during infer.
+Response: {"success":true}
+Error: {"success":false, "error":""}
+If success:false it means that the session has been closed, so the user can only use history and settings.
+
+GET /unloadmodel
+Unload the currently loaded model.
+Response: {"success": true}
+Error: {"success": false, "error": "Failed to unload the model."}
+
+POST /infer
+Send user input to the selected model for inference.
+POST VARS: text: "User's input text", model: "model name"
+The "model" POST VAR is only needed on the first message of the conversation, after this it will be ignored (so can be sent or not)
+The infer is NOT using the same response output. Instead it returns first either 1 or 0 (1 for success, 0 for failure) and then it returns the streamed output in chunks.
+The input is NOT displayed to the user, but is part of the output, for example if the user types "What is the capital of France?" the UI should not put this bubble into the conversation but should instead wait for the response which will include the questions.
+The first part of the response will contain the user's entered text appropriately wrapped in json.
+Example, you POST input:"What is the capital of France?" and get back: {"input":"What is the capital of France?"},{"output":"Paris."}
+The response is streamed and so needs to be read using an asyncronous stream.
+Whilst streaming, the user cannot submit more text for infering until the streaming is complete.
+During infering, disable the /ping timer.
+
+GET /stop
+Notifies the server to stop streaming, this is in case the user clicks "Stop".
+Note that when the user clicks stop, do not stop reading the stream, just use this endpoint to tell the server to stop and let the server finish streaming.
+Response: {"success": true}
+Error: {"success": false, "error": "Failed to unload the model."}
+
+GET /reset
+Do this whenever the user begins a new conversation.
+Response: {"success":true}
+Error: {"success":false, "error":""}
+
+---------------
+
+The following is a description of when to use the endpoints.
+
+When the page initially loads (first opened) do /sessionstart
+If /sessionstart success:false then display the error and go to the history page
+Whenever the chat tab is loaded to /getmodels (which will also be done after /sessionstart because the chat tab is default)
+When the user types something on the chat page do /infer (text they type and model selected is POST)
+if the user clicks "stop" button do /stop (stop button only appears whilst streaming from /infer)
+There are is some preprocessing done before sending to /infer. So the script should send the entered text to a function to do which then sends to /infer, don't send to /infer directy. An example of the proprocessing is to look for "search " at the beginning of the string and if so do the search functionality.
+When the user clicks on settings load the settings
+When the user views history load the history (do it each time, don't save it)
+If a user puts a conversation into a folder use /rename to do it (but keep the id the same and change only the folder).
+All the rest should be self explanitory
+
+Note that there are additional /infer POST VARS not mentioned above for when the user is using the "search" keyword.

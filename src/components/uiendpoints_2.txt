@@ -1,0 +1,76 @@
+CARDS & UPDATES
+
+The update-url from /sessionstart is used to get the cards and the updates.
+
+If it is an empty string, do not try to get it. If there is no update-url, there are no cards.
+
+Otherwise asyncronously (in the background) POST the models from /listmodels (only id & version) and the version from /sessionstart to the update-url (do not send the session token).
+This does require Internet access. However, if it fails (e.g. there is no Internet) do not give an error, just don't display any cards and don't notify the user.
+
+POST VARS to update-url:
+
+models = [{"id":"model1", "version":"1.0"}, {"id":"model3", "version":"1.1"}]
+version = (version number from /sessionstart)
+os = (unique ID from /sessionstart)
+
+Response:
+	
+[
+	{
+		"icon":"hand.png",
+		"title":"Did you know...",
+		"body":"You can do something and something else too!",
+		"update":null
+	},
+	{
+		"icon":"update.png",
+		"title":"Update Model1",
+		"body":"An update is available for Model1",
+		"update":"model1"
+	}
+	{
+		"icon":"update.png",
+		"title":"Update Application",
+		"body":"An update is available for this application. The update includes important security and performance enhancements. It is recommended you update to the latest version.",
+		"update":"!"
+	}
+]
+
+The icons are all filenames for local icons that are in the same directory as the html page. If the icon does not exist, display default.png.
+
+if update=null this is not an update card.
+If update=! this is a card for updating the application itself
+If update=(anything else) then the value is an ID for a model
+
+If the user clicks update button, if its the app to update (update=!) then GET /update
+If the user clicks update button, if it is a model to update then POST the modelid to /updatemodel
+If success=true for those, hide that card. If success=false then display the error.
+
+---------------------
+
+PREPROCESSING AND POSTPROCESSING
+
+When the user submits some text, you do not send it directly to infer but first run any preprocess scripts on it.
+The first thing to do is put the input into json object, field name "input". E.g. {"input":"What is the capital of France?"}
+You can do this with something like: let jsonString = JSON.stringify({ input: document.getElementById("inputbox").value });
+
+If the selected model has preprocess array, each value in that array is the name of a javascript file.
+
+Example if preprocess:["searchduckduckgo"] then before sending the input to /infer call the function named "preprocess" located in the searchduckduckgo.js file which will be located in scripts/searchduckduckgo.js. To do this use fully-qualified javascript names, e.g. scripts.searchduckduckgo.preprocess()
+
+In the javascript of the page this will look something like the following:
+
+		const preprocess = ["abc", "xyz"]; // the preprocess array for this model
+
+		let jsonString = JSON.stringify({ input: document.getElementById("inputbox").value });
+		for (let i = 0; i < preprocess.length; i++) {
+		  const moduleName = `scripts.${preprocess[i]}`;
+		  const preprocessFunction = eval(`${moduleName}.preprocess`);
+		  jsonString = preprocessFunction(jsonString);
+		}
+		// jsonString has been preprocessed and is now ready to be passed to /infer
+		
+Then pass the proceessed jsonString to /infer as the "input" parameter.
+
+On postprocessing do the same thing but with each chunk as it is streamed.
+Further details on how to do this will be supplied.
