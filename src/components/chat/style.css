@@ -218,12 +218,8 @@
   align-items: flex-start;
   justify-content: inherit;
 }
-.suggections_mob .swiper-slide {
-  width: 100% !important;
-}
-.suggections_mob .swiper-slide .block_ {
-  height: 270px !important ;
-}
+ 
+ 
 @media screen and (max-width: 992px) {
   .suggections {
     margin-top: 40px;

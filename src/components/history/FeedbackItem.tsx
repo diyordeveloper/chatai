@@ -12,8 +12,14 @@ import { HistoryContext } from "./HistoryProvider";
 
 function FeedbackItem({ item, index }: any) {
   let modalRef = useRef<HTMLDivElement>(null);
-  const { ChangeItemSuccess, DeleteItemSuccess, setChangeItemName, folders } =
-    useContext(HistoryContext);
+  const {
+    ChangeItemSuccess,
+    DeleteItemSuccess,
+    setChangeItemName,
+    folders,
+    dragStartHandler,
+    dragEndHandler,dragLeaveHandler
+  } = useContext(HistoryContext);
   const { darkMode } = useContext(ThemeContext);
   const [bgActive, setBgActive] = useState(false);
   const [addChangeItem, setAddChangeItem] = useState(false);
@@ -56,30 +62,38 @@ function FeedbackItem({ item, index }: any) {
       document.removeEventListener("mousedown", handler);
     };
   }, [addChangeItem]);
+
   return (
     <>
-      <div key={index} className={`item ${bgActive ? "item_active" : ""}`}>
+      <div
+      
+        draggable
+        onDragStart={(e) => dragStartHandler(e, item)}
+        onDragLeave={(e) => dragLeaveHandler(e)}
+        onDragEnd={(e) => dragEndHandler(e)}
+        className={`item ${bgActive ? "item_active" : ""}`}
+      >
         <div className="itm_box">
           <div className="times">
             <span className="time">{item.timestamp.substr(0, 10)}</span>
             <span className="time">{item.timestamp.substr(-8)}</span>
           </div>
           {changeFolderName ? (
-             <>
-             {window.screen.width <= 576 ? (
-               <>
-                 {item.you.length > 15 ? (
-                   <span>{item.you.substring(0, 15)}...</span>
-                 ) : (
-                   <span className="itm_title_">{item.you}</span>
-                 )}
-               </>
-             ) : (
-               <>
-                 <span className="itm_title_">{item.you}</span>
-               </>
-             )}
-           </>
+            <>
+              {window.screen.width <= 576 ? (
+                <>
+                  {item.you.length > 15 ? (
+                    <span>{item.you.substring(0, 15)}...</span>
+                  ) : (
+                    <span className="itm_title_">{item.you}</span>
+                  )}
+                </>
+              ) : (
+                <>
+                  <span className="itm_title_">{item.you}</span>
+                </>
+              )}
+            </>
           ) : (
             <input
               type="text"

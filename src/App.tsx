@@ -2,9 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import Router from "./Router";
 import { ThemeContext } from "./components/ThemeProvider";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "swiper/css";
-import "swiper/css/pagination";
+import "bootstrap/dist/css/bootstrap.min.css"; 
 // style
 import "./assets/style/global.css";
 import "./assets/style/all.css";

@@ -5,6 +5,7 @@ interface HistoryProviderProps {
   changeFolderName: any;
   changeItemFolderName: any;
   changeItemName: any;
+  draging: any;
   AddFolder: () => void;
   DeleteFolderSuccess: (e: any) => void;
   ChangeNameSuccessFolder: (e: any) => void;
@@ -15,6 +16,12 @@ interface HistoryProviderProps {
   setChangeItemName: (e: any) => void;
   ChangeItemSuccess: (e: any) => void;
   DeleteItemSuccess: (e: any) => void;
+  // Drag/Drop Folder Item
+  dragStartHandler: (e: any, index: any) => void;
+  dragEndHandler: (e: any) => void;
+  dragOverHandler: (e: any) => void;
+  dropHandler: (e: any, index: any) => void;
+  dragLeaveHandler: (e: any) => void;
 }
 export const HistoryContext = createContext<HistoryProviderProps>({
   folders: [],
@@ -22,6 +29,7 @@ export const HistoryContext = createContext<HistoryProviderProps>({
   changeFolderName: "",
   changeItemFolderName: "",
   changeItemName: "",
+  draging: "",
   AddFolder: () => {},
   DeleteFolderSuccess: (e: any) => {},
   ChangeNameSuccessFolder: (e: any) => {},
@@ -32,88 +40,95 @@ export const HistoryContext = createContext<HistoryProviderProps>({
   setChangeItemName: (e: any) => {},
   ChangeItemSuccess: (e: any) => {},
   DeleteItemSuccess: (e: any) => {},
+  // Drag/Drop Folder Item
+  dragStartHandler: (e: any, index: any) => {},
+  dragEndHandler: (e: any) => {},
+  dragOverHandler: (e: any) => {},
+  dropHandler: (e: any, index: any) => {},
+  dragLeaveHandler: (e: any) => {},
 });
 type Props = {
   children: ReactNode;
 };
 export const HistoryProvider = ({ children }: Props) => {
-  const foldersData: any = [
-    {
-      id: 1,
-      f_title: "A Folder Name This is what a short request from user",
-      items: [
-        {
-          id: 2,
-          you: "This is what a short request from user",
-          bot: "This is what a short response from the chatbot looks like",
-          timestamp: "2023-04-23 12:34:04",
-        },
-        {
-          id: 212,
-          you: "This is what a short request from user",
-          bot: "This is what a short response from the chatbot looks like",
-          timestamp: "2023-04-23 12:34:04",
-        },
-        {
-          id: 3,
-          you: "This is what a short request from user",
-          bot: "This is what a short response from the chatbot looks like",
-          timestamp: "2023-04-23 12:34:04",
-        },
-      ],
-    },
-    {
-      id: 4,
-      f_title: "A Folder Name",
-      items: [
-        {
-          id: 5,
-          you: "This is what a short request from user",
-          bot: "This is what a short response from the chatbot looks like",
-          timestamp: "2023-04-23 12:34:04",
-        },
-        {
-          id: 6,
-          you: "This is what a short request from user",
-          bot: "This is what a short response from the chatbot looks like",
-          timestamp: "2023-04-23 12:34:04",
-        },
-      ],
-    },
-    {
-      id: 7,
-      f_title: "A Folder Name",
-      items: [
-        {
-          id: 8,
-          you: "This is what a short request from user",
-          bot: "This is what a short response from the chatbot looks like",
-          timestamp: "2023-04-23 12:34:04",
-        },
-        {
-          id: 9,
-          you: "This is what a short request from user",
-          bot: "This is what a short response from the chatbot looks like",
-          timestamp: "2023-04-23 12:34:04",
-        },
-      ],
-    },
-  ];
   const itemsData: any = [
     {
       id: 11,
-      you: "This is what a short request from user",
+      you: "one",
       bot: "This is what a short response from the chatbot looks like",
       timestamp: "2023-04-23 12:34:04",
     },
     {
-      id: 12,
-      you: "This is what a short request from user",
+      id: 11,
+      you: "one",
       bot: "This is what a short response from the chatbot looks like",
       timestamp: "2023-04-23 12:34:04",
     },
   ];
-  const [folders, setFoldersData] = useState(foldersData);
+  const foldersData: any = [
+    {
+      id: Math.random(),
+      f_title: "A Folder Name This is what a short request from user",
+      items: [
+        {
+          id: Math.random(),
+          you: "This is what a short request from user",
+          bot: "This is what a short response from the chatbot looks like",
+          timestamp: "2023-04-23 12:34:04",
+        },
+      ],
+    },
+    {
+      id: Math.random(),
+      f_title: "A Folder Name This is what a short request from user",
+      items: [
+        {
+          id: Math.random(),
+          you: "This is what a short request from user",
+          bot: "This is what a short response from the chatbot looks like",
+          timestamp: "2023-04-23 12:34:04",
+        },
+      ],
+    },
+    {
+      id: Math.random(),
+      f_title: "A Folder Name This is what a short request from user",
+      items: [
+        {
+          id: Math.random(),
+          you: "This is what a short request from user",
+          bot: "This is what a short response from the chatbot looks like",
+          timestamp: "2023-04-23 12:34:04",
+        },
+      ],
+    },
+    {
+      id: Math.random(),
+      f_title: "History",
+      items: [
+        {
+          id: Math.random(),
+          you: "one",
+          bot: "This is what a short response from the chatbot looks like",
+          timestamp: "2023-04-23 12:34:04",
+        },
+        {
+          id: Math.random(),
+          you: "two",
+          bot: "This is what a short response from the chatbot looks like",
+          timestamp: "2023-04-23 12:34:04",
+        },
+        {
+          id: Math.random(),
+          you: "three",
+          bot: "This is what a short response from the chatbot looks like",
+          timestamp: "2023-04-23 12:34:04",
+        },
+      ],
+    },
+  ];
+
+  const [folders, setFolders] = useState(foldersData);
   const [items, setItems] = useState(itemsData);
   // ------------- Folders CRUD
   const [changeFolderName, setChangeFolderName] = useState<any>("");
@@ -124,21 +139,21 @@ export const HistoryProvider = ({ children }: Props) => {
       f_title: `Chat Ai questions folder ${folders.length + 1}`,
       items: [],
     };
-    setFoldersData([arr, ...folders]);
+    setFolders([arr, ...folders]);
     console.log(folders);
   }
   //   remove folder
   function DeleteFolderSuccess(id: any) {
     alert("Delete Folder");
     const deleteFolder = folders.filter((person: any) => person.id !== id);
-    setFoldersData(deleteFolder);
+    setFolders(deleteFolder);
   }
   // Edit folder
   function ChangeNameSuccessFolder(e: any) {
     var EditFolder = folders.map((folder: any) =>
       folder.id === e.id ? { ...folder, f_title: changeFolderName } : folder
     );
-    setFoldersData(EditFolder);
+    setFolders(EditFolder);
   }
   // Folder => Item Crud ----
   const [changeItemFolderName, setchangeItemFolderName] = useState<any>("");
@@ -148,7 +163,7 @@ export const HistoryProvider = ({ children }: Props) => {
     //   (person: any) => person.id !== ItemIndex
     // );
     // console.log(updatedItems);
-    // setFoldersData(updatedItems);
+    // setFolders(updatedItems);
   }
   // Edit
   function ChangeFolderItemSuccess(indexFolder: any, Item: any) {
@@ -156,7 +171,7 @@ export const HistoryProvider = ({ children }: Props) => {
     // var EditFolderItem = folders[indexFolder].items.map((folder: any) =>
     //   folder.id === Item.id ? { ...folder, you: changeItemFolderName } : folder
     // );
-    // setFoldersData((prev:any) => ({...prev, EditFolderItem}))
+    // setFolders((prev:any) => ({...prev, EditFolderItem}))
   }
   // Feedback Item Crud
   const [changeItemName, setChangeItemName] = useState<any>("");
@@ -174,12 +189,57 @@ export const HistoryProvider = ({ children }: Props) => {
     setItems(deleteItem);
   }
 
+  // DragDrop Item  Folder ------
+  const [draging, setDraging] = useState<any>(false);
+  const [currentFeedItem, setCurrentFeedItem] = useState<any>(null);
+  function dragStartHandler(e: React.DragEvent<HTMLDivElement>, item: any) {
+    setCurrentFeedItem(item);
+    console.log(currentFeedItem);
+
+    e.currentTarget.classList.add("dragging");
+  }
+
+  function dragEndHandler(e: React.DragEvent<HTMLDivElement>) {
+    // e.currentTarget.style.background = "#00040f";
+    e.currentTarget.classList.remove("dragging");
+  }
+
+  function dragOverHandler(e: React.DragEvent<HTMLDivElement>) {
+    e.preventDefault();
+    // e.currentTarget.style.background = "red";
+    // e.currentTarget.style.cursor = "grabbing";
+    // e.dataTransfer.dropEffect = "move";
+    // e.currentTarget.classList.add("dragging-over");
+    e.currentTarget.classList.add("drag-over");
+    setDraging(true);
+    // e.currentTarget.style.background = "#00040f";
+  }
+  function dragLeaveHandler(e: React.DragEvent<HTMLDivElement>) {
+    // e.currentTarget.style.background = "#00040f";
+    e.currentTarget.classList.remove("drag-over");
+    setDraging(false);
+  }
+  function dropHandler(e: React.DragEvent<HTMLDivElement>, item: any) {
+    e.preventDefault();
+    if (currentFeedItem) {
+      folders.map((itm: any) => {
+        itm.items = itm.items.filter(
+          (person: any) => person.id !== currentFeedItem.id
+        );
+      });
+      item.items.push(currentFeedItem);
+      setFolders([...folders]);
+      e.currentTarget.classList.remove("drag-over");
+    }
+  }
+
   const history: HistoryProviderProps = {
     folders,
     changeFolderName,
     items,
     changeItemFolderName,
     changeItemName,
+    draging,
     AddFolder,
     DeleteFolderSuccess,
     ChangeNameSuccessFolder,
@@ -190,6 +250,12 @@ export const HistoryProvider = ({ children }: Props) => {
     setChangeItemName,
     ChangeItemSuccess,
     DeleteItemSuccess,
+    //Drag/Drop Folder Item
+    dragStartHandler,
+    dragEndHandler,
+    dragOverHandler,
+    dragLeaveHandler,
+    dropHandler,
   };
 
   return (

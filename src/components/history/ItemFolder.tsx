@@ -17,6 +17,8 @@ function ItemFolder({ folderIndex, item, idx }: any) {
     DeleteFolderItemSuccess,
     ChangeFolderItemSuccess,
     setchangeItemFolderName,
+    dragStartHandler,
+    dragEndHandler,dragLeaveHandler
   } = useContext(HistoryContext);
 
   let modalRef = useRef<HTMLDivElement>(null);
@@ -64,7 +66,14 @@ function ItemFolder({ folderIndex, item, idx }: any) {
   }, [addChangeItem]);
   return (
     <>
-      <div key={idx} className={`item ${bgActive ? "item_active" : ""}`}>
+      <div
+        key={idx}
+        draggable
+        onDragStart={(e) => dragStartHandler(e, item)}
+        onDragLeave={(e) => dragLeaveHandler(e)}
+        onDragEnd={(e) => dragEndHandler(e)}
+        className={`item ${bgActive ? "item_active" : ""}`}
+      >
         <div className="itm_box">
           <div className="times">
             <span className="time">{item.timestamp.substr(0, 10)}</span>

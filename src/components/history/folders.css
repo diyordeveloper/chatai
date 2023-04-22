@@ -22,7 +22,7 @@
   overflow-y: scroll;
   height: calc(70vh - -40px);
 }
- 
+
 /* folders-dropdown ----------------- */
 
 .accordion {
@@ -137,6 +137,13 @@
 .folder_dark .item {
   border-color: var(--border_dark);
 }
+.folder_dark .item:hover {
+  cursor: grab;
+}
+.folder_dark .item:active {
+  cursor: grabbing !important;
+}
+
 .folder_dark .item .itm_title_,
 .folder_dark .item .times .time {
   color: var(--df_dark_txt);
@@ -279,7 +286,7 @@
   color: var(--df_txt);
 }
 
-@media screen and (max-width: 576px) { 
+@media screen and (max-width: 576px) {
   .item {
     margin: 4px;
   }
@@ -295,6 +302,5 @@
   }
   .box_ .btn_crd:nth-child(1) {
     margin-right: 12px;
-
   }
 }

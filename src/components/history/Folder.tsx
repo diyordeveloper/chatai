@@ -12,8 +12,13 @@ import ItemFolder from "./ItemFolder";
 import FeedbackItem from "./FeedbackItem";
 import { HistoryContext } from "./HistoryProvider";
 function Folder({ folder, index }: any) {
-  const { DeleteFolderSuccess, ChangeNameSuccessFolder, setChangeFolderName } =
-    useContext(HistoryContext);
+  const {
+    DeleteFolderSuccess,
+    ChangeNameSuccessFolder,
+    setChangeFolderName,
+    dragOverHandler,
+    dropHandler,draging
+  } = useContext(HistoryContext);
   const { darkMode } = useContext(ThemeContext);
   const [activeIndex, setActiveIndex] = useState(1);
   const [bgActive, setBgActive] = useState(1);
@@ -58,11 +63,15 @@ function Folder({ folder, index }: any) {
   return (
     <>
       <div
-        className={`accordion ${darkMode ? "accordion_dark" : ""}`}
+        onDragOver={(e) => dragOverHandler(e)}
+        onDrop={(e) => dropHandler(e, folder)}
+        className={`accordion ${darkMode ? "accordion_dark" : ""}  `}
         key={index}
       >
         <div
-          className={`accordion_header ${
+          className={`accordion_header 
+          ${draging ? "drag_header":""}
+          ${
             bgActive === folder.id ? "accordion_header_active" : ""
           } `}
         >

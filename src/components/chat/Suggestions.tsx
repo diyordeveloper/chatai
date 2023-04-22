@@ -1,8 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import Congratulations from "../../assets/icons/🎉.svg";
 import Hey from "../../assets/icons/👋.svg";
-import { ThemeContext } from "../ThemeProvider";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { ThemeContext } from "../ThemeProvider"; 
 import Select from "./Select";
 function Suggestions() {
   const { darkMode } = useContext(ThemeContext);
