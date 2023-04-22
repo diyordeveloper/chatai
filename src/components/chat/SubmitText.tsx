@@ -32,7 +32,7 @@ function SubmitText() {
         <div className="submit_">
           <div className={`container `}>
             <div className="chat_block">
-              <div className="add_chat">
+              <div className="add_chat" onClick={NewChat}>
                 <img src={PlusCircleLight} alt="Error!" />
                 <span>New </span>
                 <span>chat</span>
