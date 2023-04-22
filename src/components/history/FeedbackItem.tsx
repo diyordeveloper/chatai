@@ -4,10 +4,18 @@ import FolderSimpleFillDark from "../../assets/icons/dark/FolderSimpleFill.svg";
 import FolderSimpleFillLight from "../../assets/icons/light/FolderSimpleFill.svg";
 import VectorLight from "../../assets/icons/light/Vector.svg";
 import TrashLight from "../../assets/icons/light/Trash.svg";
+import TrashLightHover from "../../assets/icons/light/TrashHover.svg";
+import TrashHoverDark from "../../assets/icons/light/TrashHoverDark.svg";
 import PencilLight from "../../assets/icons/light/Pencil.svg";
+import PencilLightHover from "../../assets/icons/light/PencilHover.svg";
+import PencilHoverDark from "../../assets/icons/light/PencilHoverDark.svg";
 import XLight from "../../assets/icons/light/X.svg";
+import XHoverLight from "../../assets/icons/light/X Hover.svg";
+import XHoverDark from "../../assets/icons/light/X HoverDark.svg";
 import CheckLight from "../../assets/icons/light/Check.svg";
-import FolderSimplePlusLight from "../../assets/icons/light/FolderSimplePlus.svg"; 
+import CheckLightHover from "../../assets/icons/light/CheckHover.svg";
+import CheckHoverDark from "../../assets/icons/light/CheckHoverDark.svg";
+import FolderSimplePlusLight from "../../assets/icons/light/FolderSimplePlus.svg";
 import FolderSimplePlusLightHover from "../../assets/icons/light/FolderSimplePlusHover.svg";
 import FolderSimplePlusDarkHover from "../../assets/icons/dark/FolderSimplePlusHover.svg";
 import FolderSimplePlusActive from "../../assets/icons/dark/FolderSimplePlusActive.svg";
@@ -36,6 +44,7 @@ function FeedbackItem({ item, index }: any) {
   function DeleteFolder() {
     setDeleteFolder((prev) => !prev);
     setBgActive((prev) => !prev);
+    setHoveredTrash(false);
   }
   function ItemAddChange() {
     setAddChangeItem((prev) => !prev);
@@ -66,14 +75,13 @@ function FeedbackItem({ item, index }: any) {
       document.removeEventListener("mousedown", handler);
     };
   }, [addChangeItem]);
-  const [hovered, setHovered] = useState(false);
-  const handleMouseEnter = () => {
-    setHovered(true);
-  };
 
-  const handleMouseLeave = () => {
-    setHovered(false);
-  };
+  //
+  const [hoveredFolder, setHoveredFolder] = useState(false);
+  const [hoveredX, setHoveredX] = useState(false);
+  const [hoveredCheck, setHoveredCheck] = useState(false);
+  const [hoveredTrash, setHoveredTrash] = useState(false);
+  const [hoveredPencil, setHoveredPencil] = useState(false);
   return (
     <>
       <div
@@ -123,8 +131,8 @@ function FeedbackItem({ item, index }: any) {
                       <button
                         onClick={ItemAddChange}
                         className="btn_crd"
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
+                        onMouseEnter={() => setHoveredFolder(true)}
+                        onMouseLeave={() => setHoveredFolder(false)}
                       >
                         {darkMode ? (
                           <>
@@ -136,7 +144,7 @@ function FeedbackItem({ item, index }: any) {
                             ) : (
                               <img
                                 src={
-                                  hovered
+                                  hoveredFolder
                                     ? FolderSimplePlusLightHover
                                     : FolderSimplePlusLight
                                 }
@@ -146,23 +154,21 @@ function FeedbackItem({ item, index }: any) {
                           </>
                         ) : (
                           <>
-                          {
-                            addChangeItem ?
-                            <img
-                            src={
-                              FolderSimplePlusActive
-                            }
-                            alt="Error..."
-                          />:
-                          <img
-                            src={
-                              hovered
-                                ? FolderSimplePlusDarkHover
-                                : FolderSimplePlusLight
-                            }
-                            alt="Error..."
-                          />
-                          }
+                            {addChangeItem ? (
+                              <img
+                                src={FolderSimplePlusActive}
+                                alt="Error..."
+                              />
+                            ) : (
+                              <img
+                                src={
+                                  hoveredFolder
+                                    ? FolderSimplePlusDarkHover
+                                    : FolderSimplePlusLight
+                                }
+                                alt="Error..."
+                              />
+                            )}
                           </>
                         )}
                       </button>
@@ -188,11 +194,41 @@ function FeedbackItem({ item, index }: any) {
                       )}
                     </div>
 
-                    <button onClick={ChangeNameFolder} className="btn_crd">
-                      <img src={PencilLight} alt="Error..." />
+                    <button
+                      onClick={ChangeNameFolder}
+                      onMouseEnter={() => setHoveredPencil(true)}
+                      onMouseLeave={() => setHoveredPencil(false)}
+                      className="btn_crd"
+                    >
+                      {darkMode ? (
+                        <img
+                          src={hoveredPencil ? PencilHoverDark : PencilLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredPencil ? PencilLightHover : PencilLight}
+                          alt="Error..."
+                        />
+                      )}
                     </button>
-                    <button onClick={DeleteFolder} className="btn_crd">
-                      <img src={TrashLight} alt="Error..." />
+                    <button
+                      onClick={DeleteFolder}
+                      onMouseEnter={() => setHoveredTrash(true)}
+                      onMouseLeave={() => setHoveredTrash(false)}
+                      className="btn_crd"
+                    >
+                      {darkMode ? (
+                        <img
+                          src={hoveredTrash ? TrashHoverDark : TrashLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredTrash ? TrashLightHover : TrashLight}
+                          alt="Error..."
+                        />
+                      )}
                     </button>
                   </>
                 ) : (
@@ -200,11 +236,38 @@ function FeedbackItem({ item, index }: any) {
                     <button
                       onClick={() => ChangeNameFolderSuccess(item)}
                       className="btn_crd"
+                      onMouseEnter={() => setHoveredCheck(true)}
+                      onMouseLeave={() => setHoveredCheck(false)}
                     >
-                      <img src={CheckLight} alt="Error..." />
+                      {darkMode ? (
+                        <img
+                          src={hoveredCheck ? CheckHoverDark : CheckLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredCheck ? CheckLightHover : CheckLight}
+                          alt="Error..."
+                        />
+                      )}
                     </button>
-                    <button onClick={ChangeNameFolder} className="btn_crd">
-                      <img src={XLight} alt="Error..." />
+                    <button
+                      onClick={ChangeNameFolder}
+                      onMouseEnter={() => setHoveredX(true)}
+                      onMouseLeave={() => setHoveredX(false)}
+                      className="btn_crd"
+                    >
+                      {darkMode ? (
+                        <img
+                          src={hoveredX ? XHoverDark : XLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredX ? XHoverLight : XLight}
+                          alt="Error..."
+                        />
+                      )}
                     </button>
                   </>
                 )}
@@ -214,12 +277,33 @@ function FeedbackItem({ item, index }: any) {
               <>
                 <button
                   onClick={() => DeleteSuccess(item.id)}
+                  onMouseEnter={() => setHoveredCheck(true)}
+                  onMouseLeave={() => setHoveredCheck(false)}
                   className="btn_crd"
                 >
-                  <img src={CheckLight} alt="Error..." />
+                  {darkMode ? (
+                    <img
+                      src={hoveredCheck ? CheckHoverDark : CheckLight}
+                      alt="Error..."
+                    />
+                  ) : (
+                    <img
+                      src={hoveredCheck ? CheckLightHover : CheckLight}
+                      alt="Error..."
+                    />
+                  )}
                 </button>
-                <button onClick={DeleteFolder} className="btn_crd">
-                  <img src={XLight} alt="Error..." />
+                <button
+                  onClick={DeleteFolder}
+                  onMouseEnter={() => setHoveredX(true)}
+                  onMouseLeave={() => setHoveredX(false)}
+                  className="btn_crd"
+                >
+                  {darkMode ? (
+                    <img src={hoveredX ? XHoverDark : XLight} alt="Error..." />
+                  ) : (
+                    <img src={hoveredX ? XHoverLight : XLight} alt="Error..." />
+                  )}
                 </button>
               </>
             )}

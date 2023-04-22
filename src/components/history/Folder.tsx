@@ -4,9 +4,17 @@ import FolderSimpleFillDark from "../../assets/icons/dark/FolderSimpleFill.svg";
 import FolderSimpleFillLight from "../../assets/icons/light/FolderSimpleFill.svg";
 import VectorLight from "../../assets/icons/light/Vector.svg";
 import TrashLight from "../../assets/icons/light/Trash.svg";
+import TrashLightHover from "../../assets/icons/light/TrashHover.svg";
+import TrashHoverDark from "../../assets/icons/light/TrashHoverDark.svg";
 import PencilLight from "../../assets/icons/light/Pencil.svg";
+import PencilLightHover from "../../assets/icons/light/PencilHover.svg";
+import PencilHoverDark from "../../assets/icons/light/PencilHoverDark.svg";
 import XLight from "../../assets/icons/light/X.svg";
+import XHoverLight from "../../assets/icons/light/X Hover.svg";
+import XHoverDark from "../../assets/icons/light/X HoverDark.svg";
 import CheckLight from "../../assets/icons/light/Check.svg";
+import CheckLightHover from "../../assets/icons/light/CheckHover.svg";
+import CheckHoverDark from "../../assets/icons/light/CheckHoverDark.svg";
 import FolderSimplePlusLight from "../../assets/icons/light/FolderSimplePlus.svg";
 import ItemFolder from "./ItemFolder";
 import FeedbackItem from "./FeedbackItem";
@@ -17,7 +25,8 @@ function Folder({ folder, index }: any) {
     ChangeNameSuccessFolder,
     setChangeFolderName,
     dragOverHandler,
-    dropHandler,draging
+    dropHandler,
+    draging,
   } = useContext(HistoryContext);
   const { darkMode } = useContext(ThemeContext);
   const [activeIndex, setActiveIndex] = useState(1);
@@ -27,6 +36,7 @@ function Folder({ folder, index }: any) {
   function ChangeNameFolder() {
     setChangeFolderNameBoolean((prev) => !prev);
     setBgActive(-1);
+    setHoveredPencil(false)
   }
   //   Change Folder Name (:
   function ChangeNameFolderSuccess(e: any) {
@@ -38,6 +48,8 @@ function Folder({ folder, index }: any) {
   function DeleteFolder() {
     setDeleteFolder((prev) => !prev);
     setBgActive(-1);
+    setHoveredTrash(false)
+
   }
   //   Delete Folder (:
   function DeleteSuccess(e: any) {
@@ -59,7 +71,10 @@ function Folder({ folder, index }: any) {
       setBgActive(index);
     }
   };
-
+  const [hoveredX, setHoveredX] = useState(false);
+  const [hoveredCheck, setHoveredCheck] = useState(false);
+  const [hoveredTrash, setHoveredTrash] = useState(false);
+  const [hoveredPencil, setHoveredPencil] = useState(false);
   return (
     <>
       <div
@@ -70,10 +85,8 @@ function Folder({ folder, index }: any) {
       >
         <div
           className={`accordion_header 
-          ${draging ? "drag_header":""}
-          ${
-            bgActive === folder.id ? "accordion_header_active" : ""
-          } `}
+          ${draging ? "drag_header" : ""}
+          ${bgActive === folder.id ? "accordion_header_active" : ""} `}
         >
           <div className="box_" onClick={() => OpenFile(folder.id)}>
             {deleteFolder ? (
@@ -153,11 +166,33 @@ function Folder({ folder, index }: any) {
               <>
                 {changeFolderNameBoolean ? (
                   <>
-                    <button onClick={ChangeNameFolder} className="btn_crd">
-                      <img src={PencilLight} alt="Error..." />
+                    <button onClick={ChangeNameFolder} onMouseEnter={() => setHoveredPencil(true)}
+                      onMouseLeave={() => setHoveredPencil(false)} className="btn_crd">
+                     {darkMode ? (
+                        <img
+                          src={hoveredPencil ? PencilHoverDark : PencilLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredPencil ? PencilLightHover : PencilLight}
+                          alt="Error..."
+                        />
+                      )}
                     </button>
-                    <button onClick={DeleteFolder} className="btn_crd">
-                      <img src={TrashLight} alt="Error..." />
+                    <button onClick={DeleteFolder}onMouseEnter={() => setHoveredTrash(true)}
+                      onMouseLeave={() => setHoveredTrash(false)} className="btn_crd">
+                  {darkMode ? (
+                        <img
+                          src={hoveredTrash ? TrashHoverDark : TrashLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredTrash ? TrashLightHover : TrashLight}
+                          alt="Error..."
+                        />
+                      )}
                     </button>
                   </>
                 ) : (
@@ -165,11 +200,34 @@ function Folder({ folder, index }: any) {
                     <button
                       onClick={() => ChangeNameFolderSuccess(folder)}
                       className="btn_crd"
+                      onMouseEnter={() => setHoveredCheck(true)}
+                      onMouseLeave={() => setHoveredCheck(false)}
                     >
-                      <img src={CheckLight} alt="Error..." />
+              {darkMode ? (
+                        <img
+                          src={hoveredCheck ? CheckHoverDark : CheckLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredCheck ? CheckLightHover : CheckLight}
+                          alt="Error..."
+                        />
+                      )}
                     </button>
-                    <button onClick={ChangeNameFolder} className="btn_crd">
-                      <img src={XLight} alt="Error..." />
+                    <button onClick={ChangeNameFolder}   onMouseEnter={() => setHoveredX(true)}
+                      onMouseLeave={() => setHoveredX(false)}className="btn_crd">
+                       {darkMode ? (
+                        <img
+                          src={hoveredX ? XHoverDark : XLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredX ? XHoverLight : XLight}
+                          alt="Error..."
+                        />
+                      )}
                     </button>
                   </>
                 )}
@@ -180,11 +238,34 @@ function Folder({ folder, index }: any) {
                 <button
                   onClick={() => DeleteSuccess(folder.id)}
                   className="btn_crd"
+                  onMouseEnter={() => setHoveredCheck(true)}
+                      onMouseLeave={() => setHoveredCheck(false)}
                 >
-                  <img src={CheckLight} alt="Error..." />
+                   {darkMode ? (
+                        <img
+                          src={hoveredCheck ? CheckHoverDark : CheckLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredCheck ? CheckLightHover : CheckLight}
+                          alt="Error..."
+                        />
+                      )}
                 </button>
-                <button onClick={DeleteFolder} className="btn_crd">
-                  <img src={XLight} alt="Error..." />
+                <button onClick={DeleteFolder}  onMouseEnter={() => setHoveredX(true)}
+                      onMouseLeave={() => setHoveredX(false)} className="btn_crd">
+                {darkMode ? (
+                        <img
+                          src={hoveredX ? XHoverDark : XLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredX ? XHoverLight : XLight}
+                          alt="Error..."
+                        />
+                      )}
                 </button>
               </>
             )}
