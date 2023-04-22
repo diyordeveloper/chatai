@@ -142,6 +142,7 @@
   display: flex;
   align-items: center;
   justify-content: start;
+  min-height: 104px;
 }
 .icon_ {
   margin-right: 16px;
