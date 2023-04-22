@@ -170,6 +170,7 @@
   font-size: 14px;
   letter-spacing: -0.04em;
   color: var(--df_txt);
+  margin-bottom: 0;
 }
 .texts_two {
   display: flex;

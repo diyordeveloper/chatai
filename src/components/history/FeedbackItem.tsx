@@ -7,7 +7,10 @@ import TrashLight from "../../assets/icons/light/Trash.svg";
 import PencilLight from "../../assets/icons/light/Pencil.svg";
 import XLight from "../../assets/icons/light/X.svg";
 import CheckLight from "../../assets/icons/light/Check.svg";
-import FolderSimplePlusLight from "../../assets/icons/light/FolderSimplePlus.svg";
+import FolderSimplePlusLight from "../../assets/icons/light/FolderSimplePlus.svg"; 
+import FolderSimplePlusLightHover from "../../assets/icons/light/FolderSimplePlusHover.svg";
+import FolderSimplePlusDarkHover from "../../assets/icons/dark/FolderSimplePlusHover.svg";
+import FolderSimplePlusActive from "../../assets/icons/dark/FolderSimplePlusActive.svg";
 import { HistoryContext } from "./HistoryProvider";
 
 function FeedbackItem({ item, index }: any) {
@@ -18,7 +21,8 @@ function FeedbackItem({ item, index }: any) {
     setChangeItemName,
     folders,
     dragStartHandler,
-    dragEndHandler,dragLeaveHandler
+    dragEndHandler,
+    dragLeaveHandler,
   } = useContext(HistoryContext);
   const { darkMode } = useContext(ThemeContext);
   const [bgActive, setBgActive] = useState(false);
@@ -62,11 +66,17 @@ function FeedbackItem({ item, index }: any) {
       document.removeEventListener("mousedown", handler);
     };
   }, [addChangeItem]);
+  const [hovered, setHovered] = useState(false);
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
 
+  const handleMouseLeave = () => {
+    setHovered(false);
+  };
   return (
     <>
       <div
-      
         draggable
         onDragStart={(e) => dragStartHandler(e, item)}
         onDragLeave={(e) => dragLeaveHandler(e)}
@@ -110,8 +120,51 @@ function FeedbackItem({ item, index }: any) {
                 {changeFolderName ? (
                   <>
                     <div className="menu_folders">
-                      <button onClick={ItemAddChange} className="btn_crd">
-                        <img src={FolderSimplePlusLight} alt="Error..." />
+                      <button
+                        onClick={ItemAddChange}
+                        className="btn_crd"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                      >
+                        {darkMode ? (
+                          <>
+                            {addChangeItem ? (
+                              <img
+                                src={FolderSimplePlusLightHover}
+                                alt="Error..."
+                              />
+                            ) : (
+                              <img
+                                src={
+                                  hovered
+                                    ? FolderSimplePlusLightHover
+                                    : FolderSimplePlusLight
+                                }
+                                alt="Error..."
+                              />
+                            )}
+                          </>
+                        ) : (
+                          <>
+                          {
+                            addChangeItem ?
+                            <img
+                            src={
+                              FolderSimplePlusActive
+                            }
+                            alt="Error..."
+                          />:
+                          <img
+                            src={
+                              hovered
+                                ? FolderSimplePlusDarkHover
+                                : FolderSimplePlusLight
+                            }
+                            alt="Error..."
+                          />
+                          }
+                          </>
+                        )}
                       </button>
                       {addChangeItem ? (
                         <ul

@@ -232,7 +232,7 @@ export const HistoryProvider = ({ children }: Props) => {
       e.currentTarget.classList.remove("drag-over");
     }
   }
-
+  
   const history: HistoryProviderProps = {
     folders,
     changeFolderName,
