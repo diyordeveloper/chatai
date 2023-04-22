@@ -10,7 +10,7 @@ const options = [
 function Select() {
   const { darkMode } = useContext(ThemeContext);
   const [selectedOption, setSelectedOption] = useState({ id: 3, value: "Some Model Name 3" });
-  const [showOptions, setShowOptions] = useState(true);
+  const [showOptions, setShowOptions] = useState(false);
 
   const handleToggleOptions = () => {
     setShowOptions(!showOptions);

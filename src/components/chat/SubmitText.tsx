@@ -10,6 +10,7 @@ function SubmitText() {
   const { submitText, setSubmitText, SendMesssage, NewChat, generateRes } =
     useContext(ChatContext);
   const { darkMode } = useContext(ThemeContext);
+  
   return (
     <>
       <div className={`Submit_dev ${darkMode ? "Submit_dev_dark" : ""}`}>
