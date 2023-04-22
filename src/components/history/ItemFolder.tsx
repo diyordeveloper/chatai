@@ -21,7 +21,7 @@ import FolderSimplePlusDarkHover from "../../assets/icons/dark/FolderSimplePlusH
 import FolderSimplePlusActive from "../../assets/icons/dark/FolderSimplePlusActive.svg";
 import { HistoryContext } from "./HistoryProvider";
 
-function ItemFolder({ folderIndex, item, idx }: any) {
+function ItemFolder({ folderIndex, item, key }: any) {
   const { darkMode } = useContext(ThemeContext);
   const {
     folders,
@@ -41,11 +41,20 @@ function ItemFolder({ folderIndex, item, idx }: any) {
   function ChangeNameFolder() {
     setChangeFolderName((prev) => !prev);
     setBgActive((prev) => !prev);
+    setHoveredFolder(false);
+    setHoveredX(false);
+    setHoveredCheck(false);
+    setHoveredTrash(false);
+    setHoveredPencil(false);
   }
   function DeleteFolder() {
     setDeleteFolder((prev) => !prev);
     setBgActive((prev) => !prev);
-    setHoveredTrash(false)
+    setHoveredFolder(false);
+    setHoveredX(false);
+    setHoveredCheck(false);
+    setHoveredTrash(false);
+    setHoveredPencil(false);
   }
   function ItemAddChange() {
     setAddChangeItem((prev) => !prev);
@@ -86,7 +95,7 @@ function ItemFolder({ folderIndex, item, idx }: any) {
   return (
     <>
       <div
-        key={idx}
+        key={key}
         draggable
         onDragStart={(e) => dragStartHandler(e, item)}
         onDragLeave={(e) => dragLeaveHandler(e)}
@@ -201,17 +210,17 @@ function ItemFolder({ folderIndex, item, idx }: any) {
                       onMouseLeave={() => setHoveredPencil(false)}
                       className="btn_crd"
                     >
-                     {
-                      darkMode?
-                      <img
-                      src={hoveredPencil ? PencilHoverDark : PencilLight}
-                      alt="Error..."
-                    />:
-                    <img
-                    src={hoveredPencil ? PencilLightHover : PencilLight}
-                    alt="Error..."
-                  />
-                     }
+                      {darkMode ? (
+                        <img
+                          src={hoveredPencil ? PencilHoverDark : PencilLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredPencil ? PencilLightHover : PencilLight}
+                          alt="Error..."
+                        />
+                      )}
                     </button>
                     <button
                       onClick={DeleteFolder}
@@ -219,16 +228,17 @@ function ItemFolder({ folderIndex, item, idx }: any) {
                       onMouseLeave={() => setHoveredTrash(false)}
                       className="btn_crd"
                     >
-                      {
-                        darkMode?<img
-                        src={hoveredTrash ? TrashHoverDark : TrashLight}
-                        alt="Error..."
-                      />:
-                      <img
-                        src={hoveredTrash ? TrashLightHover : TrashLight}
-                        alt="Error..."
-                      />
-                      }
+                      {darkMode ? (
+                        <img
+                          src={hoveredTrash ? TrashHoverDark : TrashLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredTrash ? TrashLightHover : TrashLight}
+                          alt="Error..."
+                        />
+                      )}
                     </button>
                   </>
                 ) : (
@@ -239,17 +249,17 @@ function ItemFolder({ folderIndex, item, idx }: any) {
                       onMouseEnter={() => setHoveredCheck(true)}
                       onMouseLeave={() => setHoveredCheck(false)}
                     >
-                     {
-                      darkMode?
-                      <img
-                      src={hoveredCheck ? CheckHoverDark : CheckLight}
-                      alt="Error..."
-                    />:
-                    <img
-                    src={hoveredCheck ? CheckLightHover : CheckLight}
-                    alt="Error..."
-                  />
-                     }
+                      {darkMode ? (
+                        <img
+                          src={hoveredCheck ? CheckHoverDark : CheckLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredCheck ? CheckLightHover : CheckLight}
+                          alt="Error..."
+                        />
+                      )}
                     </button>
                     <button
                       onClick={ChangeNameFolder}
@@ -257,17 +267,17 @@ function ItemFolder({ folderIndex, item, idx }: any) {
                       onMouseLeave={() => setHoveredX(false)}
                       className="btn_crd"
                     >
-                      {
-                        darkMode ?
+                      {darkMode ? (
                         <img
-                        src={hoveredX ? XHoverDark : XLight}
-                        alt="Error..."
-                      />:
-                      <img
-                        src={hoveredX ? XHoverLight : XLight}
-                        alt="Error..."
-                      />
-                      }
+                          src={hoveredX ? XHoverDark : XLight}
+                          alt="Error..."
+                        />
+                      ) : (
+                        <img
+                          src={hoveredX ? XHoverLight : XLight}
+                          alt="Error..."
+                        />
+                      )}
                     </button>
                   </>
                 )}
@@ -281,17 +291,17 @@ function ItemFolder({ folderIndex, item, idx }: any) {
                   onMouseLeave={() => setHoveredCheck(false)}
                   className="btn_crd"
                 >
-                  {
-                    darkMode?
+                  {darkMode ? (
                     <img
-                    src={hoveredCheck ? CheckHoverDark : CheckLight}
-                    alt="Error..."
-                  />:
-                  <img
-                    src={hoveredCheck ? CheckLightHover : CheckLight}
-                    alt="Error..."
-                  />
-                  }
+                      src={hoveredCheck ? CheckHoverDark : CheckLight}
+                      alt="Error..."
+                    />
+                  ) : (
+                    <img
+                      src={hoveredCheck ? CheckLightHover : CheckLight}
+                      alt="Error..."
+                    />
+                  )}
                 </button>
                 <button
                   onClick={DeleteFolder}
@@ -299,11 +309,11 @@ function ItemFolder({ folderIndex, item, idx }: any) {
                   onMouseLeave={() => setHoveredX(false)}
                   className="btn_crd"
                 >
-                 {
-                  darkMode? 
-                  <img src={hoveredX ? XHoverDark : XLight} alt="Error..." />:
-                  <img src={hoveredX ? XHoverLight : XLight} alt="Error..." />
-                 }
+                  {darkMode ? (
+                    <img src={hoveredX ? XHoverDark : XLight} alt="Error..." />
+                  ) : (
+                    <img src={hoveredX ? XHoverLight : XLight} alt="Error..." />
+                  )}
                 </button>
               </>
             )}

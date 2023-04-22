@@ -21,7 +21,7 @@ import FolderSimplePlusDarkHover from "../../assets/icons/dark/FolderSimplePlusH
 import FolderSimplePlusActive from "../../assets/icons/dark/FolderSimplePlusActive.svg";
 import { HistoryContext } from "./HistoryProvider";
 
-function FeedbackItem({ item, index }: any) {
+function FeedbackItem({ item, key }: any) {
   let modalRef = useRef<HTMLDivElement>(null);
   const {
     ChangeItemSuccess,
@@ -40,11 +40,20 @@ function FeedbackItem({ item, index }: any) {
   function ChangeNameFolder() {
     setChangeFolderName((prev) => !prev);
     setBgActive((prev) => !prev);
+    setHoveredFolder(false);
+    setHoveredX(false);
+    setHoveredCheck(false);
+    setHoveredTrash(false);
+    setHoveredPencil(false);
   }
   function DeleteFolder() {
     setDeleteFolder((prev) => !prev);
     setBgActive((prev) => !prev);
+    setHoveredFolder(false);
+    setHoveredX(false);
+    setHoveredCheck(false);
     setHoveredTrash(false);
+    setHoveredPencil(false);
   }
   function ItemAddChange() {
     setAddChangeItem((prev) => !prev);
@@ -85,6 +94,7 @@ function FeedbackItem({ item, index }: any) {
   return (
     <>
       <div
+        key={key}
         draggable
         onDragStart={(e) => dragStartHandler(e, item)}
         onDragLeave={(e) => dragLeaveHandler(e)}

@@ -194,9 +194,9 @@ export const HistoryProvider = ({ children }: Props) => {
   const [currentFeedItem, setCurrentFeedItem] = useState<any>(null);
   function dragStartHandler(e: React.DragEvent<HTMLDivElement>, item: any) {
     setCurrentFeedItem(item);
-    console.log(currentFeedItem);
-
+    console.log(currentFeedItem); 
     e.currentTarget.classList.add("dragging");
+    // e.currentTarget.style.background = "red";
   }
 
   function dragEndHandler(e: React.DragEvent<HTMLDivElement>) {
