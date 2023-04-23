@@ -12,7 +12,7 @@ import ItemFolder from "./ItemFolder";
 import FeedbackItem from "./FeedbackItem";
 import Folder from "./Folder";
 import { HistoryContext } from "./HistoryProvider";
-import DragDrop from "./DragDrop";
+
 function Folders() {
   const { folders } = useContext(HistoryContext);
   const { darkMode } = useContext(ThemeContext);
@@ -30,7 +30,7 @@ function Folders() {
             <FeedbackItem item={item} key={index} />
           ))}
         </div>
-      </div> 
+      </div>
     </>
   );
 }
