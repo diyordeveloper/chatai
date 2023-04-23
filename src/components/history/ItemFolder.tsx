@@ -95,7 +95,7 @@ function ItemFolder({ folderIndex, item, key }: any) {
   const [hoveredTrash, setHoveredTrash] = useState(false);
   const [hoveredPencil, setHoveredPencil] = useState(false);
   function OpenItem(e:any) {
-    navigation(`/history/${e}`);
+    navigation(`/history/1`);
   }
   return (
     <>
