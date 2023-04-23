@@ -56,8 +56,7 @@ function NewChat() {
                     className={`like ${
                       toggleState === 1 ? "active_class" : ""
                     }`}
-                    onClick={() => toggleTab(1)}
-                    // className="active_class"
+                    onClick={() => toggleTab(1)} 
                     alt="Error!!!"
                   />
                   <img

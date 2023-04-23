@@ -11,6 +11,10 @@ import "./DisabledHistory.css";
 import Footer from "../layout/Footer";
 function DisabledHistoryChat() {
   const { darkMode } = useContext(ThemeContext);
+  const [toggleState, setToggleState] = useState(-1);
+  const toggleTab = (index: any) => {
+    setToggleState(index);
+  };
   return (
     <>
       <Layout>
@@ -54,14 +58,19 @@ function DisabledHistoryChat() {
                   </div>
                   <div className="blok_two">
                     <img
-                      src={ThumbsUpLight}
-                      className="like "
-                      // className="active_class"
+                      src={ThumbsUpLight} 
+                      className={`like ${
+                        toggleState === 1 ? "active_class" : ""
+                      }`}
+                      onClick={() => toggleTab(1)}  
                       alt="Error!!!"
                     />
                     <img
                       src={ThumbsDownLight}
-                      className="dislike"
+                      className={`dislike ${
+                        toggleState === 2 ? " active_class" : ""
+                      }`}
+                      onClick={() => toggleTab(2)}
                       alt="Error!!!"
                     />
                   </div>
