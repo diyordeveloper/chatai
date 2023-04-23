@@ -108,7 +108,7 @@ function FeedbackItem({ item, key }: any) {
         onDragEnd={(e) => dragEndHandler(e)}
         onDragOver={(e) => handleDragOver(e)}
         className={`item ${bgActive || addChangeItem ? "item_active" : ""}`}
-        onClick={() => OpenItem(item.you)}
+        // onClick={() => OpenItem(item.you)}
       >
         <div className="itm_box">
           <div className="times">
