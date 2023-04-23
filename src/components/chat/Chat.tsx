@@ -4,14 +4,14 @@ import "./style.css";
 import Suggestions from "./Suggestions";
 import SubmitText from "./SubmitText";
 import NewChat from "./NewChat";
-import { ChatContext } from "./ChatProvider"; 
+import { ChatContext } from "./ChatProvider";
 function Chat() {
   const { newChatBolean } = useContext(ChatContext);
   return (
     <>
       <Layout>
         {newChatBolean ? <NewChat /> : <Suggestions />}
-        <SubmitText /> 
+        <SubmitText />
       </Layout>
     </>
   );

@@ -37,7 +37,7 @@ function Header() {
             >
               <img
                 src={
-                  pathname === "/history"
+                  pathname === "/history" || pathname
                     ? ClockCounterClockwiseLight
                     : ClockCounterClockwiseDark
                 }

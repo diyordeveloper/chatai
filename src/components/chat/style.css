@@ -222,14 +222,13 @@
   align-items: flex-start;
   justify-content: inherit;
 }
- 
- 
+
 @media screen and (max-width: 992px) {
   .suggections {
     margin-top: 40px;
   }
 }
-@media screen and (max-height: 888px){
+@media screen and (max-height: 888px) {
   .suggections {
     margin-top: 10px;
   }
@@ -243,6 +242,9 @@
   }
   .suggections {
     margin-top: 32px;
+  }
+  .btn_update {
+    margin-top: 16px;
   }
 }
 /* Submit Input --------------------- */
@@ -362,7 +364,7 @@
   outline: none;
   background: none;
   border: none;
-  border: 1px solid var(--border_light);
+  border: 1px solid var(--border_light); 
   border-radius: 4px 0 0 4px;
   border-right: none;
   font-size: 14px;
@@ -372,6 +374,21 @@
   color: var(--mini_text);
   font-size: 14px;
   line-height: 20px;
+}
+.send_msg_ofline{
+  border: none;
+  border: 1px solid #9F9FA6; 
+  border-radius: 4px;
+  background:#E2E2E2;
+}
+.send_msg_ofline
+.msg_ofline::placeholder {
+  color: var(--mini_text); 
+}
+.Submit_dev_dark .send_msg_ofline{
+  border: 1px solid #72727D; 
+  background:#62636B;
+
 }
 .send_ {
   cursor: pointer;

@@ -32,7 +32,6 @@
   margin: 8px 0;
 }
 .accordion_header {
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -190,15 +189,25 @@
 
 .item {
   margin: 8px;
-  padding: 8px 12px;
+  padding: 4px 12px;
   border: 1px solid var(--border_light);
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: 0.2s;
 }
+
 .item_active {
   border: 1px solid var(--b6b6);
+}
+.item:hover {
+  border: 1px solid var(--b6b6);
+  cursor: grab;
+}
+.app_dark .item:hover {
+  border: 1px solid var(--border_dark);
+  cursor: grab;
 }
 .itm_box {
   display: flex;

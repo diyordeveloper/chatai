@@ -20,9 +20,11 @@ import FolderSimplePlusLightHover from "../../assets/icons/light/FolderSimplePlu
 import FolderSimplePlusDarkHover from "../../assets/icons/dark/FolderSimplePlusHover.svg";
 import FolderSimplePlusActive from "../../assets/icons/dark/FolderSimplePlusActive.svg";
 import { HistoryContext } from "./HistoryProvider";
+import { useNavigate } from "react-router-dom";
 
 function ItemFolder({ folderIndex, item, key }: any) {
   const { darkMode } = useContext(ThemeContext);
+  var navigation = useNavigate();
   const {
     folders,
     DeleteFolderItemSuccess,
@@ -92,6 +94,9 @@ function ItemFolder({ folderIndex, item, key }: any) {
   const [hoveredCheck, setHoveredCheck] = useState(false);
   const [hoveredTrash, setHoveredTrash] = useState(false);
   const [hoveredPencil, setHoveredPencil] = useState(false);
+  function OpenItem(e:any) {
+    navigation(`/history/${e}`);
+  }
   return (
     <>
       <div
@@ -100,7 +105,8 @@ function ItemFolder({ folderIndex, item, key }: any) {
         onDragStart={(e) => dragStartHandler(e, item)}
         onDragLeave={(e) => dragLeaveHandler(e)}
         onDragEnd={(e) => dragEndHandler(e)}
-        className={`item ${bgActive ? "item_active" : ""}`}
+        className={`item ${bgActive || addChangeItem ? "item_active" : ""}`}
+        onClick={()=>OpenItem(item.you)}
       >
         <div className="itm_box">
           <div className="times">

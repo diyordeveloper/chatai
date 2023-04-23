@@ -1,12 +1,13 @@
 import React, { ReactNode, createContext, useState, useEffect } from "react";
 
 interface ChatContextProps {
-  submitText: any;
+  submitText: string;
   newChatBolean: any;
   generateRes: any;
   NewChat: () => void;
   setSubmitText: (e: any) => void;
   SendMesssage: (e: any) => void;
+  handleKeyPress: (e: any) => void;
 }
 export const ChatContext = createContext<ChatContextProps>({
   submitText: "",
@@ -15,43 +16,36 @@ export const ChatContext = createContext<ChatContextProps>({
   NewChat: () => {},
   setSubmitText: (e: any) => {},
   SendMesssage: () => {},
+  handleKeyPress: () => {},
 });
 type Props = {
   children: ReactNode;
 };
 export const ChatProvider = ({ children }: Props) => {
-  var chatRoom = [
-    {
-      you: "hello !",
-    },
-  ];
-
   const [submitText, setSubmitText] = useState("");
   const [newChatBolean, setNewChatBolean] = useState(false);
   const [generateRes, setGenerateRes] = useState(false);
 
   function SendMesssage() {
     if (submitText === "") {
-      console.log("hey ");
+      console.log("text not found :(((");
     } else {
       setNewChatBolean(true);
       setGenerateRes(true);
       setSubmitText("");
     }
   }
-  useEffect(() => {
-    const keyDownHandler = (event: any) => {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        SendMesssage();
-      }
-    };
-
-    document.addEventListener("keydown", keyDownHandler);
-    return () => {
-      document.removeEventListener("keydown", keyDownHandler);
-    };
-  }, []);
+  function handleKeyPress(event: any) {
+    if (event.key === "Enter" && submitText.trim() !== "") {
+      // send message
+      // console.log("Sending message:", submitText);
+      setNewChatBolean(true);
+      setGenerateRes(true);
+      setSubmitText("");
+    } else {
+      console.log("text not found :(((");
+    }
+  }
   function NewChat() {
     setSubmitText("");
     setNewChatBolean(false);
@@ -64,6 +58,7 @@ export const ChatProvider = ({ children }: Props) => {
     NewChat,
     setSubmitText,
     SendMesssage,
+    handleKeyPress,
   };
 
   return (
