@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ThemeContext } from "../ThemeProvider";
 import ThumbsDownLight from "../../assets/icons/light/Thumbs Down.svg";
 import ThumbsUpLight from "../../assets/icons/light/Thumbs up.svg";
@@ -7,7 +7,10 @@ import CopyLight from "../../assets/icons/light/Copy.svg";
 import "./NewChatStyle.css";
 function NewChat() {
   const { darkMode } = useContext(ThemeContext);
-
+  const [toggleState, setToggleState] = useState(-1);
+  const toggleTab = (index: any) => {
+    setToggleState(index);
+  };
   return (
     <>
       <div className={`new_chat  ${darkMode ? "new_chat_dark" : ""}`}>
@@ -50,13 +53,19 @@ function NewChat() {
                 <div className="blok_two">
                   <img
                     src={ThumbsUpLight}
-                    className="like "
+                    className={`like ${
+                      toggleState === 1 ? "active_class" : ""
+                    }`}
+                    onClick={() => toggleTab(1)}
                     // className="active_class"
                     alt="Error!!!"
                   />
                   <img
                     src={ThumbsDownLight}
-                    className="dislike"
+                    className={`dislike ${
+                      toggleState === 2 ? " active_class" : ""
+                    }`}
+                    onClick={() => toggleTab(2)}
                     alt="Error!!!"
                   />
                 </div>

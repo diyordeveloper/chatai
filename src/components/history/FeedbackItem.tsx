@@ -112,22 +112,22 @@ function FeedbackItem({ item, key }: any) {
       >
         <div className="itm_box">
           <div className="times">
-            <span className="time">{item.timestamp.substr(0, 10)}</span>
-            <span className="time">{item.timestamp.substr(-8)}</span>
+            <span className="time" onClick={()=>OpenItem(item.you)}>{item.timestamp.substr(0, 10)}</span>
+            <span className="time" onClick={()=>OpenItem(item.you)}>{item.timestamp.substr(-8)}</span>
           </div>
           {changeFolderName ? (
             <>
               {window.screen.width <= 576 ? (
                 <>
                   {item.you.length > 15 ? (
-                    <span>{item.you.substring(0, 15)}...</span>
+                    <span onClick={()=>OpenItem(item.you)} className="w-100">{item.you.substring(0, 15)}...</span>
                   ) : (
-                    <span className="itm_title_">{item.you}</span>
+                    <span onClick={()=>OpenItem(item.you)} className="itm_title_ w-100">{item.you}</span>
                   )}
                 </>
               ) : (
                 <>
-                  <span className="itm_title_">{item.you}</span>
+                  <span className="itm_title_ w-100" onClick={()=>OpenItem(item.you)}>{item.you}</span>
                 </>
               )}
             </>
@@ -274,7 +274,7 @@ function FeedbackItem({ item, key }: any) {
                       onClick={ChangeNameFolder}
                       onMouseEnter={() => setHoveredX(true)}
                       onMouseLeave={() => setHoveredX(false)}
-                      className="btn_crd"
+                      className="btn_crd X"
                     >
                       {darkMode ? (
                         <img
@@ -316,7 +316,7 @@ function FeedbackItem({ item, key }: any) {
                   onClick={DeleteFolder}
                   onMouseEnter={() => setHoveredX(true)}
                   onMouseLeave={() => setHoveredX(false)}
-                  className="btn_crd"
+                  className="btn_crd X"
                 >
                   {darkMode ? (
                     <img src={hoveredX ? XHoverDark : XLight} alt="Error..." />

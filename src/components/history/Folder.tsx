@@ -241,7 +241,7 @@ function Folder({ folder, key }: any) {
                       onClick={ChangeNameFolder}
                       onMouseEnter={() => setHoveredX(true)}
                       onMouseLeave={() => setHoveredX(false)}
-                      className="btn_crd"
+                      className="btn_crd X"
                     >
                       {darkMode ? (
                         <img
@@ -283,7 +283,7 @@ function Folder({ folder, key }: any) {
                   onClick={DeleteFolder}
                   onMouseEnter={() => setHoveredX(true)}
                   onMouseLeave={() => setHoveredX(false)}
-                  className="btn_crd"
+                  className="btn_crd X"
                 >
                   {darkMode ? (
                     <img src={hoveredX ? XHoverDark : XLight} alt="Error..." />

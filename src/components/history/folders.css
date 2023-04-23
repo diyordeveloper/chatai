@@ -39,9 +39,16 @@
   padding: 8px 12px;
   border-radius: 4px;
   border: 1px solid var(--border_light);
+  transition: 0.2s;
 }
 .accordion_header_active {
   background: var(--hover_gray);
+}
+.accordion_header:hover{
+  background: var(--hover_gray)  ; 
+}
+.accordion_dark .accordion_header:hover{
+  background: var(--active_bg)  ; 
 }
 .accordion_header.isHoveredActive {
   background: var(--hover_gray) !important;
@@ -110,9 +117,10 @@
   border: none;
   outline: none;
   background: transparent;
+  line-height: 0;
 }
 .btn_crd img {
-  width: 22px;
+  /* width: 22px; */
 }
 .accordion_header .btn_crd:nth-child(1) {
   margin-right: 15px;
@@ -221,6 +229,9 @@
 .itm_box .btn_crd:nth-child(1),
 .itm_box .btn_crd:nth-child(2) {
   margin-right: 15px;
+}
+.itm_box .btn_crd.X{
+  margin-right: 0;
 }
 .itm_box .times {
   display: flex;
