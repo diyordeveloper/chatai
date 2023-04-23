@@ -29,6 +29,7 @@ function Folder({ folder, key }: any) {
     draging,
     isHovered,
     handleDragEnter,
+    handleDragOver,
   } = useContext(HistoryContext);
   const { darkMode } = useContext(ThemeContext);
   const [activeIndex, setActiveIndex] = useState(1);

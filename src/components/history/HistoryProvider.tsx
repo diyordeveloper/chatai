@@ -23,7 +23,8 @@ interface HistoryProviderProps {
   dragOverHandler: (e: any) => void;
   dropHandler: (e: any, index: any) => void;
   dragLeaveHandler: (e: any) => void;
-  handleDragEnter: (e: any,index:any) => void;
+  handleDragEnter: (e: any, index: any) => void;
+  handleDragOver: (e: any ) => void;
 }
 export const HistoryContext = createContext<HistoryProviderProps>({
   folders: [],
@@ -49,7 +50,8 @@ export const HistoryContext = createContext<HistoryProviderProps>({
   dragOverHandler: (e: any) => {},
   dropHandler: (e: any, index: any) => {},
   dragLeaveHandler: (e: any) => {},
-  handleDragEnter: (e: any,index:any) => {},
+  handleDragEnter: (e: any, index: any) => {},
+  handleDragOver: (e: any ) => {},
 });
 type Props = {
   children: ReactNode;
@@ -243,9 +245,12 @@ export const HistoryProvider = ({ children }: Props) => {
     setIsHovered(null);
   }
 
-  function handleDragEnter(e: any,index:any) {
+  function handleDragEnter(e: any, index: any) {
     e.preventDefault();
     setIsHovered(index);
+  }
+  function handleDragOver(e: any) {
+    e.preventDefault();
   }
 
   const history: HistoryProviderProps = {
@@ -273,6 +278,7 @@ export const HistoryProvider = ({ children }: Props) => {
     dragLeaveHandler,
     dropHandler,
     handleDragEnter,
+    handleDragOver,
   };
 
   return (

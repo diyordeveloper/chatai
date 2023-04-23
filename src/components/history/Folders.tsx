@@ -30,7 +30,7 @@ function Folders() {
             <FeedbackItem item={item} key={index} />
           ))}
         </div>
-      </div>
+      </div> 
     </>
   );
 }

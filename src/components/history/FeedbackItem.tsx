@@ -30,7 +30,7 @@ function FeedbackItem({ item, key }: any) {
     folders,
     dragStartHandler,
     dragEndHandler,
-    dragLeaveHandler,
+    dragLeaveHandler,handleDragOver
   } = useContext(HistoryContext);
   const { darkMode } = useContext(ThemeContext);
   const [bgActive, setBgActive] = useState(false);
@@ -99,6 +99,7 @@ function FeedbackItem({ item, key }: any) {
         onDragStart={(e) => dragStartHandler(e, item)}
         onDragLeave={(e) => dragLeaveHandler(e)}
         onDragEnd={(e) => dragEndHandler(e)}
+        onDragOver={(e) => handleDragOver(e)} 
         className={`item ${bgActive ? "item_active" : ""}`}
       >
         <div className="itm_box">

@@ -100,15 +100,12 @@
 
 .dragging {
   opacity: 1 !important;
-   z-index: 999;
+  z-index: 999;
   /* background: #000; */
 }
-.dragging  {
-   
-
+.dragging {
 }
-.dragging .itm_box:nth-child(2){
-  display: none;
+.dragging .itm_box:nth-child(2) {
 }
 .drag_header {
   /* background: red !important; */
