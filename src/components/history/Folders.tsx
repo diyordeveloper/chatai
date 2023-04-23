@@ -23,7 +23,7 @@ function Folders() {
         className={`container folder_screen ${darkMode ? "folder_dark" : ""}`}
       >
         {folders.slice(0, -1).map((folder: any, index: any) => (
-          <Folder folder={folder}  key={index} />
+          <Folder folder={folder} key={index} />
         ))}
         <div className="Feedback_items">
           {folders[lastIndex].items.map((item: any, index: any) => (

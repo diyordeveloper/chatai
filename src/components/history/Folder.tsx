@@ -27,6 +27,8 @@ function Folder({ folder, key }: any) {
     dragOverHandler,
     dropHandler,
     draging,
+    isHovered,
+    handleDragEnter,
   } = useContext(HistoryContext);
   const { darkMode } = useContext(ThemeContext);
   const [activeIndex, setActiveIndex] = useState(1);
@@ -86,12 +88,18 @@ function Folder({ folder, key }: any) {
         key={key}
         onDragOver={(e) => dragOverHandler(e)}
         onDrop={(e) => dropHandler(e, folder)}
+        onDragEnter={(e) => handleDragEnter(e, folder.id)}
         className={`accordion ${darkMode ? "accordion_dark" : ""}  `}
       >
         <div
-          className={`accordion_header 
-          ${draging ? "drag_header" : ""}
-          ${bgActive === folder.id ? "accordion_header_active" : ""} `}
+          className={`accordion_header  
+          ${bgActive === folder.id ? "accordion_header_active" : ""}
+          ${
+            isHovered === folder.id
+              ? `${darkMode ? "isHoveredActiveDark" : "isHoveredActive"}`
+              : ""
+          }
+  `}
         >
           <div className="box_" onClick={() => OpenFile(folder.id)}>
             {deleteFolder ? (

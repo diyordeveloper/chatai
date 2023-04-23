@@ -6,6 +6,7 @@ interface HistoryProviderProps {
   changeItemFolderName: any;
   changeItemName: any;
   draging: any;
+  isHovered: any;
   AddFolder: () => void;
   DeleteFolderSuccess: (e: any) => void;
   ChangeNameSuccessFolder: (e: any) => void;
@@ -22,6 +23,7 @@ interface HistoryProviderProps {
   dragOverHandler: (e: any) => void;
   dropHandler: (e: any, index: any) => void;
   dragLeaveHandler: (e: any) => void;
+  handleDragEnter: (e: any,index:any) => void;
 }
 export const HistoryContext = createContext<HistoryProviderProps>({
   folders: [],
@@ -30,6 +32,7 @@ export const HistoryContext = createContext<HistoryProviderProps>({
   changeItemFolderName: "",
   changeItemName: "",
   draging: "",
+  isHovered: null,
   AddFolder: () => {},
   DeleteFolderSuccess: (e: any) => {},
   ChangeNameSuccessFolder: (e: any) => {},
@@ -46,6 +49,7 @@ export const HistoryContext = createContext<HistoryProviderProps>({
   dragOverHandler: (e: any) => {},
   dropHandler: (e: any, index: any) => {},
   dragLeaveHandler: (e: any) => {},
+  handleDragEnter: (e: any,index:any) => {},
 });
 type Props = {
   children: ReactNode;
@@ -192,16 +196,19 @@ export const HistoryProvider = ({ children }: Props) => {
   // DragDrop Item  Folder ------
   const [draging, setDraging] = useState<any>(false);
   const [currentFeedItem, setCurrentFeedItem] = useState<any>(null);
+  const [isHovered, setIsHovered] = useState(null);
+
   function dragStartHandler(e: React.DragEvent<HTMLDivElement>, item: any) {
     setCurrentFeedItem(item);
-    console.log(currentFeedItem); 
     e.currentTarget.classList.add("dragging");
     // e.currentTarget.style.background = "red";
+    console.log("Enter Folder");
   }
 
   function dragEndHandler(e: React.DragEvent<HTMLDivElement>) {
     // e.currentTarget.style.background = "#00040f";
     e.currentTarget.classList.remove("dragging");
+    console.log("Enter Folder 2");
   }
 
   function dragOverHandler(e: React.DragEvent<HTMLDivElement>) {
@@ -213,11 +220,13 @@ export const HistoryProvider = ({ children }: Props) => {
     e.currentTarget.classList.add("drag-over");
     setDraging(true);
     // e.currentTarget.style.background = "#00040f";
+    console.log("Enter Folder 3");
   }
   function dragLeaveHandler(e: React.DragEvent<HTMLDivElement>) {
     // e.currentTarget.style.background = "#00040f";
     e.currentTarget.classList.remove("drag-over");
     setDraging(false);
+    setIsHovered(null);
   }
   function dropHandler(e: React.DragEvent<HTMLDivElement>, item: any) {
     e.preventDefault();
@@ -231,8 +240,14 @@ export const HistoryProvider = ({ children }: Props) => {
       setFolders([...folders]);
       e.currentTarget.classList.remove("drag-over");
     }
+    setIsHovered(null);
   }
-  
+
+  function handleDragEnter(e: any,index:any) {
+    e.preventDefault();
+    setIsHovered(index);
+  }
+
   const history: HistoryProviderProps = {
     folders,
     changeFolderName,
@@ -240,6 +255,7 @@ export const HistoryProvider = ({ children }: Props) => {
     changeItemFolderName,
     changeItemName,
     draging,
+    isHovered,
     AddFolder,
     DeleteFolderSuccess,
     ChangeNameSuccessFolder,
@@ -256,6 +272,7 @@ export const HistoryProvider = ({ children }: Props) => {
     dragOverHandler,
     dragLeaveHandler,
     dropHandler,
+    handleDragEnter,
   };
 
   return (
