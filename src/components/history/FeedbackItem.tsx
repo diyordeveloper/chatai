@@ -35,6 +35,7 @@ function FeedbackItem({ item, key }: any) {
     dragEndHandler,
     dragLeaveHandler,
     handleDragOver,
+    ChangeFolderClick,
   } = useContext(HistoryContext);
   const { darkMode } = useContext(ThemeContext);
   const [bgActive, setBgActive] = useState(false);
@@ -61,6 +62,10 @@ function FeedbackItem({ item, key }: any) {
   }
   function ItemAddChange() {
     setAddChangeItem((prev) => !prev);
+  }
+  function ChangeFolder(e: any, i: any) {
+    ChangeFolderClick(e, i);
+    ItemAddChange();
   }
 
   //   Change Folder Name (:
@@ -97,7 +102,7 @@ function FeedbackItem({ item, key }: any) {
   const [hoveredPencil, setHoveredPencil] = useState(false);
   function OpenItem(e: any) {
     navigation(`/history/1`);
-  }
+  } 
   return (
     <>
       <div
@@ -112,22 +117,38 @@ function FeedbackItem({ item, key }: any) {
       >
         <div className="itm_box">
           <div className="times">
-            <span className="time" onClick={()=>OpenItem(item.you)}>{item.timestamp.substr(0, 10)}</span>
-            <span className="time" onClick={()=>OpenItem(item.you)}>{item.timestamp.substr(-8)}</span>
+            <span className="time" onClick={() => OpenItem(item.you)}>
+              {item.timestamp.substr(0, 10)}
+            </span>
+            <span className="time" onClick={() => OpenItem(item.you)}>
+              {item.timestamp.substr(-8)}
+            </span>
           </div>
           {changeFolderName ? (
             <>
               {window.screen.width <= 576 ? (
                 <>
                   {item.you.length > 15 ? (
-                    <span onClick={()=>OpenItem(item.you)} className="w-100">{item.you.substring(0, 15)}...</span>
+                    <span onClick={() => OpenItem(item.you)} className="w-100">
+                      {item.you.substring(0, 15)}...
+                    </span>
                   ) : (
-                    <span onClick={()=>OpenItem(item.you)} className="itm_title_ w-100">{item.you}</span>
+                    <span
+                      onClick={() => OpenItem(item.you)}
+                      className="itm_title_ w-100"
+                    >
+                      {item.you}
+                    </span>
                   )}
                 </>
               ) : (
                 <>
-                  <span className="itm_title_ w-100" onClick={()=>OpenItem(item.you)}>{item.you}</span>
+                  <span
+                    className="itm_title_ w-100"
+                    onClick={() => OpenItem(item.you)}
+                  >
+                    {item.you}
+                  </span>
                 </>
               )}
             </>
@@ -197,8 +218,11 @@ function FeedbackItem({ item, key }: any) {
                           // @ts-ignore
                           ref={modalRef}
                         >
-                          {folders.map((fold: any, indx: any) => (
-                            <li key={indx}>
+                          {folders.slice(0, -1).map((fold: any, indx: any) => (
+                            <li
+                              key={indx}
+                              onClick={() => ChangeFolder(fold, item)}
+                            >
                               <img src={FolderSimpleFillLight} alt="Error!!!" />
                               {fold.f_title.length > 20 ? (
                                 <span>{fold.f_title.substring(0, 20)}...</span>

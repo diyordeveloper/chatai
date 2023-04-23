@@ -24,7 +24,8 @@ interface HistoryProviderProps {
   dropHandler: (e: any, index: any) => void;
   dragLeaveHandler: (e: any) => void;
   handleDragEnter: (e: any, index: any) => void;
-  handleDragOver: (e: any ) => void;
+  handleDragOver: (e: any) => void;
+  ChangeFolderClick: (e: any, index: any) => void;
 }
 export const HistoryContext = createContext<HistoryProviderProps>({
   folders: [],
@@ -51,7 +52,8 @@ export const HistoryContext = createContext<HistoryProviderProps>({
   dropHandler: (e: any, index: any) => {},
   dragLeaveHandler: (e: any) => {},
   handleDragEnter: (e: any, index: any) => {},
-  handleDragOver: (e: any ) => {},
+  handleDragOver: (e: any) => {},
+  ChangeFolderClick: (e: any, index: any) => {},
 });
 type Props = {
   children: ReactNode;
@@ -244,13 +246,23 @@ export const HistoryProvider = ({ children }: Props) => {
     }
     setIsHovered(null);
   }
-
+  // Folder Change Menu
   function handleDragEnter(e: any, index: any) {
     e.preventDefault();
     setIsHovered(index);
   }
   function handleDragOver(e: any) {
     e.preventDefault();
+  }
+  function ChangeFolderClick(e: any, itm: any) {
+    var folder = e;
+    var item = itm;
+
+    folders.map((itm: any) => {
+      itm.items = itm.items.filter((person: any) => person.id !== item.id);
+    });
+    folder.items.push(item);
+    setFolders([...folders]); 
   }
 
   const history: HistoryProviderProps = {
@@ -279,6 +291,7 @@ export const HistoryProvider = ({ children }: Props) => {
     dropHandler,
     handleDragEnter,
     handleDragOver,
+    ChangeFolderClick,
   };
 
   return (

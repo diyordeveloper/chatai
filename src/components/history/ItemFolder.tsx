@@ -33,6 +33,7 @@ function ItemFolder({ folderIndex, item, key }: any) {
     dragStartHandler,
     dragEndHandler,
     dragLeaveHandler,
+    ChangeFolderClick,
   } = useContext(HistoryContext);
 
   let modalRef = useRef<HTMLDivElement>(null);
@@ -60,6 +61,10 @@ function ItemFolder({ folderIndex, item, key }: any) {
   }
   function ItemAddChange() {
     setAddChangeItem((prev) => !prev);
+  }
+  function ChangeFolder(e: any, i: any) {
+    ChangeFolderClick(e, i);
+    ItemAddChange();
   }
 
   //   Change Folder Name (:
@@ -97,6 +102,7 @@ function ItemFolder({ folderIndex, item, key }: any) {
   function OpenItem(e: any) {
     navigation(`/history/1`);
   }
+
   return (
     <>
       <div
@@ -211,8 +217,11 @@ function ItemFolder({ folderIndex, item, key }: any) {
                           // @ts-ignore
                           ref={modalRef}
                         >
-                          {folders.map((fold: any, indx: any) => (
-                            <li key={indx}>
+                          {folders.slice(0, -1).map((fold: any, indx: any) => (
+                            <li
+                              key={indx}
+                              onClick={() => ChangeFolder(fold, item)}
+                            >
                               <img src={FolderSimpleFillLight} alt="Error!!!" />
                               {fold.f_title.length > 20 ? (
                                 <span>{fold.f_title.substring(0, 20)}...</span>
