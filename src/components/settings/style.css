@@ -108,9 +108,12 @@
 }
 .row_ .txt_sm {
   width: 201px;
+  font-size: 14px;
+line-height: 20px; 
+letter-spacing: -0.04em;
 }
 .row_ {
-  margin-top: 20px;
+  margin-top: 12px;
 }
 .row_ .num {
   margin-left: 20px;
@@ -159,8 +162,7 @@
   color: #fff;
   font-size: 14px;
   line-height: 20px;
-  letter-spacing: -0.04em;
-  transition: 0.2s; 
+  letter-spacing: -0.04em; 
 }
 .footer_dev .btn_update:hover{
   /* background: var(--hover_gray); */

@@ -51,7 +51,6 @@
   text-decoration: none;
   border: 1px solid var(--border_light);
   border-bottom: none;
-  transition: 0.2s;
 }
 .table_btn:hover {
   background: var(--hover_gray);
@@ -89,10 +88,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px 8px 20px;
+  padding: 10px 10px 7px 10px;
   border-radius: 4px;
   border: 1px solid var(--border_light);
-  transition: 0.2s;
 }
 .stng_btn:hover {
   background: var(--hover_gray);
@@ -132,6 +130,9 @@
 }
 .footer_ p {
   margin-bottom: 0;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.08em;
 }
 .foter_text {
   color: #9393a4;
@@ -148,7 +149,7 @@
     padding: 14px;
   }
   .btns_ .stng_btn {
-    padding: 10px;
+    padding: 10px  ;
   }
   .add_new_chat {
     padding: 10px;

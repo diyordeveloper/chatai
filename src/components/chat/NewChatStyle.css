@@ -22,6 +22,7 @@
 .chat_ {
   padding: 32px 0;
 }
+
 .chat_bot {
   background: var(--primary_bg);
 }
@@ -57,7 +58,7 @@
   cursor: pointer;
   padding: 4px;
   border-radius: 2px;
-  transition: 0.2s;
+  
 }
 .blok_two img:hover {
   background: var(--hover_gray);
@@ -148,7 +149,11 @@
 .new_chat_dark .blok_two .active_class {
   /* color: var(--hover_gray); */
 }
-
+@media screen and (max-width: 768px){
+  .chat_ {
+    padding: 20px 0  !important;
+  } 
+}
 @media screen and (max-width: 576px) {
   .bot_block {
     flex-direction: column;
@@ -161,7 +166,6 @@
     margin-top: 4px;
   }
   .chat_{
-    padding: 12px 16px;
-
+    padding: 12px 16px !important; 
   }
 }

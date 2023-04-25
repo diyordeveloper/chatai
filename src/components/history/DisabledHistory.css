@@ -57,7 +57,7 @@
     cursor: pointer;
     padding: 4px;
     border-radius: 2px;
-    transition: 0.2s;
+    
   }
   .blok_two img:hover {
     background: var(--hover_gray);
@@ -192,7 +192,7 @@
     border-radius: 4px;
     padding: 12px;
     cursor: pointer;
-    transition: 0.2s;
+    
   }
   .Submit_dev_dark .generate_btns_ .btn_gnrt {
     border-color: var(--border_dark);
@@ -234,7 +234,7 @@
     border: 1px solid var(--border_light);
     cursor: pointer;
     border-radius: 4px;
-    transition: 0.2s;
+    
   }
   .add_chat:hover {
     background: var(--hover_gray);
@@ -250,7 +250,7 @@
     border: 1px solid var(--border_light);
     cursor: pointer;
     border-radius: 4px;
-    transition: 0.2s;
+    
     margin-left: 4px;
   }
   .stop_btn {
@@ -261,7 +261,7 @@
     border: 1px solid var(--border_light);
     cursor: pointer;
     border-radius: 4px;
-    transition: 0.2s;
+    
     margin-left: 4px;
   }
   

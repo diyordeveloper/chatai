@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import Congratulations from "../../assets/icons/🎉.svg";
 import Hey from "../../assets/icons/👋.svg";
-import { ThemeContext } from "../ThemeProvider"; 
+import { ThemeContext } from "../ThemeProvider";
 import Select from "./Select";
 function Suggestions() {
   const { darkMode } = useContext(ThemeContext);
@@ -15,20 +15,22 @@ function Suggestions() {
           }`}
         >
           <div className="block_ block_two">
-                <div className="icon_">
-                  <img src={Congratulations} alt="Error" />
-                </div>
-                <div className="texts_ texts_two">
-                  <div className="">
-                    <span className="title_">Update available</span>
-                    <p className="body_">
-                      Update now available! Get the latest features and
-                      improvements.
-                    </p>
-                  </div>
-                  <button className="btn_update">Update now</button>
-                </div>
+            <div className="icon_">
+              <img src={Congratulations} alt="Error" />
+            </div>
+            <div className="texts_ texts_two mt16">
+              <div className="">
+                <span className="title_ ">Update available</span>
+                <p className="body_">
+                  Update now available! Get the latest features and
+                  improvements.
+                </p>
               </div>
+              <button className="btn_update">
+                <span>Update</span> <span>now</span>
+              </button>
+            </div>
+          </div>
         </div>
         <div
           className={`suggections suggections_desktop  ${

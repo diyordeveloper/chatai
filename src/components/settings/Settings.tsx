@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import CloseIcon from "../../assets/icons/dark/X.svg";
 import { ThemeContext } from "../ThemeProvider";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,10 +13,26 @@ function Settings() {
   function SaveChanges() {
     navigate(-1);
   }
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    function handleKeyPress(event: KeyboardEvent): void {
+      if (event.key === "Enter") {
+        buttonRef.current?.click();
+      }
+    }
+
+    document.addEventListener("keypress", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("keypress", handleKeyPress);
+    };
+  }, []);
+
   return (
     <>
       <>
-        <div className={`container header_ ${darkMode ? "h_dark" : ""}`}>
+        <div className={`container  header_ ${darkMode ? "h_dark" : ""}`}>
           <span className="title_">Settings</span>
           <div>
             <img
@@ -88,7 +104,7 @@ function Settings() {
           </div>
         </div>
         <div className="container footer_dev">
-          <button className="btn_update" onClick={SaveChanges}>
+          <button className="btn_update" ref={buttonRef} onClick={SaveChanges}>
             Save settings
           </button>
         </div>

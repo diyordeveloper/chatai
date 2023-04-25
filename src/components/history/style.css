@@ -26,7 +26,7 @@
   cursor: pointer;
   margin: 16px 0 22px 0;
   background: transparent;
-  transition: 0.2s;
+  
 }
 .add_new_btn:hover {
   background: var(--hover_gray);

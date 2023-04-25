@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { ThemeContext } from "../ThemeProvider";
-import FolderSimpleFillDark from "../../assets/icons/dark/FolderSimpleFill.svg";
-import FolderSimpleFillLight from "../../assets/icons/light/FolderSimpleFill.svg";
+import   FolderSimpleFillDark   from "../../assets/icons/dark/FolderSimpleFill.svg";
+import   FolderSimpleFillLight   from "../../assets/icons/light/FolderSimpleFill.svg";
 import VectorLight from "../../assets/icons/light/Vector.svg";
 import TrashLight from "../../assets/icons/light/Trash.svg";
 import TrashLightHover from "../../assets/icons/light/TrashHover.svg";
@@ -25,7 +25,7 @@ function Folder({ folder, key }: any) {
     ChangeNameSuccessFolder,
     setChangeFolderName,
     dragOverHandler,
-    dropHandler, 
+    dropHandler,
     isHovered,
     handleDragEnter,
     handleDragOver,
@@ -123,11 +123,18 @@ function Folder({ folder, key }: any) {
               </>
             )}
             {deleteFolder ? (
+              <>
               <img
                 src={darkMode ? FolderSimpleFillDark : FolderSimpleFillLight}
                 className="file_icon"
                 alt="Error..."
               />
+              {/* {
+                darkMode?
+                <FolderSimpleFillDark/>:
+                <FolderSimpleFillLight/>
+              } */}
+              </>
             ) : null}
             <div className="f_title">
               {changeFolderNameBoolean ? (
@@ -136,17 +143,17 @@ function Folder({ folder, key }: any) {
                     <>
                       {deleteFolder ? (
                         <>
-                          {folder.f_title.length > 20 ? (
-                            <span>{folder.f_title.substring(0, 20)}...</span>
+                          {folder.f_title.length > 16 ? (
+                            <span>{folder.f_title.substring(0, 16)}...</span>
                           ) : (
                             <span>{folder.f_title}</span>
                           )}
                         </>
                       ) : (
                         <>
-                          {folder.f_title.length > 20 ? (
+                          {folder.f_title.length > 16 ? (
                             <span>
-                              "{folder.f_title.substring(0, 20)}..." ?
+                              "{folder.f_title.substring(0, 16)}..." ?
                             </span>
                           ) : (
                             <span>"{folder.f_title}" ?</span>

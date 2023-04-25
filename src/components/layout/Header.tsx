@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import ChatDotsDark from "../../assets/icons/dark/ChatDots.svg";
-import ClockCounterClockwiseDark from "../../assets/icons/dark/ClockCounterClockwise.svg";
-import GearSixDark from "../../assets/icons/dark/GearSix.svg";
-import ChatDotsLight from "../../assets/icons/light/ChatDots.svg";
-import ClockCounterClockwiseLight from "../../assets/icons/light/ClockCounterClockwise.svg";
+import { ReactComponent as ChatDotsDark } from "../../assets/icons/dark/ChatDots.svg";
+import { ReactComponent as ClockCounterClockwiseDark } from "../../assets/icons/dark/ClockCounterClockwise.svg";
+import { ReactComponent as GearSixDark } from "../../assets/icons/dark/GearSix.svg";
+import { ReactComponent as ChatDotsLight } from "../../assets/icons/light/ChatDots.svg";
+import { ReactComponent as ClockCounterClockwiseLight } from "../../assets/icons/light/ClockCounterClockwise.svg";
 import PlusCircleLight from "../../assets/icons/light/PlusCircle.svg";
 import { NavLink, useLocation } from "react-router-dom";
 import { ThemeContext } from "../ThemeProvider";
@@ -25,24 +25,31 @@ function Header() {
               to={"/"}
               className={`table_btn ${darkMode ? "dark_btn" : "light_btn"}`}
             >
-              <img
+              {/* <img
                 src={pathname === "/" ? ChatDotsLight : ChatDotsDark}
                 alt="Error"
-              />
+              /> */}
+              {pathname === "/" ? <ChatDotsLight /> : <ChatDotsDark />}
               <span>Chat</span>
             </NavLink>
             <NavLink
               to={"/history"}
               className={`table_btn ${darkMode ? "dark_btn" : "light_btn"}`}
             >
-              <img
+              {/* <img
                 src={
                   pathname === "/history" || pathname === "/history/1"
                     ? ClockCounterClockwiseLight
                     : ClockCounterClockwiseDark
                 }
                 alt="Error"
-              />
+              /> */}
+              {pathname === "/history" || pathname === "/history/1" ? (
+                <ClockCounterClockwiseLight />
+              ) : (
+                <ClockCounterClockwiseDark />
+              )}
+
               <span>History</span>
             </NavLink>
             <div className="add_chat_dev">
@@ -66,7 +73,8 @@ function Header() {
                 darkMode ? "stng_btn_dark" : "stng_btn_light"
               }`}
             >
-              <img src={GearSixDark} alt="Error" />
+              {/* <img src={GearSixDark} alt="Error" /> */}
+              <GearSixDark />
             </NavLink>
           </div>
         </div>

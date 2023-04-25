@@ -39,7 +39,7 @@
   padding: 8px 12px;
   border-radius: 4px;
   border: 1px solid var(--border_light);
-  transition: 0.2s;
+  
 }
 .accordion_header_active {
   background: var(--hover_gray);
@@ -67,7 +67,7 @@
 }
 .trash_icon {
   margin-right: 12px;
-  transition: 0.2s;
+  
 }
 .delete_txt {
   margin-right: 12px;
@@ -78,11 +78,11 @@
 }
 .vector_icon_rotate {
   transform: rotate(0);
-  transition: 0.2s;
+  
 }
 .vector_icon_rotate_clear {
   transform: rotate(-90deg);
-  transition: 0.2s;
+  
 }
 .file_icon {
   margin: 0 10px 0 0px;
@@ -203,7 +203,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: 0.2s;
+  
 }
 
 .item_active {
@@ -297,7 +297,7 @@
   align-items: center;
   padding: 8px;
   cursor: pointer;
-  transition: 0.2s;
+  
 }
 .menu_ li:hover {
   background: var(--hover_gray);

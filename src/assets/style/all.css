@@ -25,10 +25,23 @@
 a {
   color: #333333;
 }
- 
+@media screen and (max-width: 2000px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-xl,
+  .container-xxl {
+    max-width: 996px !important;
+  }
+}
 
-
-/* scroll style --- */ 
+@media screen and (max-width: 768px) {
+  .container,
+  .container-sm {
+    max-width: 100% !important;
+  }
+}
+/* scroll style --- */
 /* width */
 ::-webkit-scrollbar {
   width: 0px;
@@ -50,20 +63,17 @@ a {
 }
 /* dark scroll -------------------*/
 /* Track */
-.app_dark::-webkit-scrollbar-track 
-{
+.app_dark::-webkit-scrollbar-track {
   background: var(--primary_bg_dark);
   border-radius: 4px;
 }
 /* Handle */
-.app_dark::-webkit-scrollbar-thumb 
-{
+.app_dark::-webkit-scrollbar-thumb {
   background: var(--active_bg);
   border-radius: 4px;
   cursor: pointer;
 }
 /* Handle on hover */
-.app_dark::-webkit-scrollbar-thumb:hover 
-{
+.app_dark::-webkit-scrollbar-thumb:hover {
   background: var(--hover_gray);
 }

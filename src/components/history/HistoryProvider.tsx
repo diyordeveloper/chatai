@@ -76,7 +76,7 @@ export const HistoryProvider = ({ children }: Props) => {
   const foldersData: any = [
     {
       id: Math.random(),
-      f_title: "A Folder Name This is what a short request from user",
+      f_title: "Folder Name",
       items: [
         {
           id: Math.random(),
@@ -88,7 +88,7 @@ export const HistoryProvider = ({ children }: Props) => {
     },
     {
       id: Math.random(),
-      f_title: "A Folder Name This is what a short request from user",
+      f_title: "Some longer name folder",
       items: [
         {
           id: Math.random(),
@@ -100,7 +100,7 @@ export const HistoryProvider = ({ children }: Props) => {
     },
     {
       id: Math.random(),
-      f_title: "A Folder Name This is what a short request from user",
+      f_title: "Folder Name",
       items: [
         {
           id: Math.random(),
