@@ -128,9 +128,9 @@ function FeedbackItem({ item, key }: any) {
             <>
               {window.screen.width <= 576 ? (
                 <>
-                  {item.you.length > 15 ? (
+                  {item.you.length > 22 ? (
                     <span onClick={() => OpenItem(item.you)} className="w-100">
-                      {item.you.substring(0, 15)}...
+                      {item.you.substring(0, 22)}...
                     </span>
                   ) : (
                     <span

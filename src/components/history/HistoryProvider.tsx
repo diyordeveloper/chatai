@@ -100,19 +100,19 @@ export const HistoryProvider = ({ children }: Props) => {
       items: [
         {
           id: Math.random(),
-          you: "one",
+          you: "What color is the sky?",
           bot: "This is what a short response from the chatbot looks like",
           timestamp: "2023-04-23 12:34:04",
         },
         {
           id: Math.random(),
-          you: "two",
+          you: "What color is the sky?",
           bot: "This is what a short response from the chatbot looks like",
           timestamp: "2023-04-23 12:34:04",
         },
         {
           id: Math.random(),
-          you: "three",
+          you: "What color is the sky?",
           bot: "This is what a short response from the chatbot looks like",
           timestamp: "2023-04-23 12:34:04",
         },

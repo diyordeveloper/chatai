@@ -226,11 +226,14 @@
   margin-right: 15px;
 }
 
-.itm_box  .mbminus {
-  margin-bottom: -18px !important;
-}
+
 .itm_box .btn_crd.X {
   margin-right: 0 !important;
+}
+.itm_box .w-100{
+  font-size: 14px;
+line-height: 20px; 
+letter-spacing: -0.04em;
 }
 .itm_box .times {
   display: flex;
@@ -312,6 +315,9 @@
 }
 
 @media screen and (max-width: 576px) {
+  .itm_box  .mbminus {
+    margin-bottom: -18px !important;
+  }
   .item {
     margin: 4px;
   }
