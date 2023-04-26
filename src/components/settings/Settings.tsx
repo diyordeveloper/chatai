@@ -6,11 +6,40 @@ import "./style.css";
 function Settings() {
   var navigate = useNavigate();
   const { darkMode, toggleTheme } = useContext(ThemeContext);
-  const [temperature_low, setTemperature_Low] = useState("0.2");
-  const [topk_low, setTopK_Low] = useState("40");
-  const [temperature_high, setTemperature_High] = useState("0.8");
-  const [topk_high, setTopK_High] = useState("40");
+  var temperature_lowItem = localStorage.getItem("temperature_low");
+  var topk_lowItem = localStorage.getItem("topk_low");
+  var temperature_highItem = localStorage.getItem("temperature_high");
+  var topk_highItem = localStorage.getItem("topk_high");
+
+  const [temperature_low, setTemperature_Low] = useState(
+    temperature_lowItem || "0.2"
+  );
+  const [topk_low, setTopK_Low] = useState(topk_lowItem || "40");
+  const [temperature_high, setTemperature_High] = useState(
+    temperature_highItem || "0.8"
+  );
+  const [topk_high, setTopK_High] = useState(topk_highItem || "40");
   function SaveChanges() {
+    if (
+      temperature_lowItem == null ||
+      topk_lowItem == null ||
+      temperature_highItem == null ||
+      topk_highItem == null
+    ) {
+      localStorage.setItem("temperature_low", temperature_low);
+      localStorage.setItem("topk_low", topk_low);
+      localStorage.setItem("temperature_high", temperature_high);
+      localStorage.setItem("topk_high", topk_high);
+    } else {
+      localStorage.removeItem("temperature_low");
+      localStorage.removeItem("topk_low");
+      localStorage.removeItem("temperature_high");
+      localStorage.removeItem("topk_high");
+      localStorage.setItem("temperature_low", temperature_low);
+      localStorage.setItem("topk_low", topk_low);
+      localStorage.setItem("temperature_high", temperature_high);
+      localStorage.setItem("topk_high", topk_high);
+    }
     navigate(-1);
   }
   const buttonRef = useRef<HTMLButtonElement>(null);
