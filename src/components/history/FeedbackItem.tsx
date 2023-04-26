@@ -115,15 +115,15 @@ function FeedbackItem({ item, key }: any) {
         className={`item ${bgActive || addChangeItem ? "item_active" : ""}`}
         // onClick={() => OpenItem(item.you)}
       >
-        <div className="itm_box">
-          <div className="times">
+        <div className="itm_box"> 
+            <div className="times">
             <span className="time" onClick={() => OpenItem(item.you)}>
               {item.timestamp.substr(0, 10)}
             </span>
             <span className="time" onClick={() => OpenItem(item.you)}>
               {item.timestamp.substr(-8)}
             </span>
-          </div>
+          </div> 
           {changeFolderName ? (
             <>
               {window.screen.width <= 576 ? (
@@ -278,7 +278,7 @@ function FeedbackItem({ item, key }: any) {
                   <>
                     <button
                       onClick={() => ChangeNameFolderSuccess(item)}
-                      className="btn_crd"
+                      className="btn_crd mbminus"
                       onMouseEnter={() => setHoveredCheck(true)}
                       onMouseLeave={() => setHoveredCheck(false)}
                     >
@@ -298,7 +298,7 @@ function FeedbackItem({ item, key }: any) {
                       onClick={ChangeNameFolder}
                       onMouseEnter={() => setHoveredX(true)}
                       onMouseLeave={() => setHoveredX(false)}
-                      className="btn_crd X"
+                      className="btn_crd X mbminus"
                     >
                       {darkMode ? (
                         <img
@@ -322,7 +322,7 @@ function FeedbackItem({ item, key }: any) {
                   onClick={() => DeleteSuccess(item.id)}
                   onMouseEnter={() => setHoveredCheck(true)}
                   onMouseLeave={() => setHoveredCheck(false)}
-                  className="btn_crd"
+                  className="btn_crd  "
                 >
                   {darkMode ? (
                     <img
@@ -340,7 +340,7 @@ function FeedbackItem({ item, key }: any) {
                   onClick={DeleteFolder}
                   onMouseEnter={() => setHoveredX(true)}
                   onMouseLeave={() => setHoveredX(false)}
-                  className="btn_crd X"
+                  className="btn_crd X  "
                 >
                   {darkMode ? (
                     <img src={hoveredX ? XHoverDark : XLight} alt="Error..." />

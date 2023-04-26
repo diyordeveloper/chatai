@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import Congratulations from "../../assets/icons/🎉.svg";
 import Hey from "../../assets/icons/👋.svg";
+import Lampa from "../../assets/icons/lampa.png";
 import { ThemeContext } from "../ThemeProvider";
 import Select from "./Select";
 function Suggestions() {
@@ -65,8 +66,10 @@ function Suggestions() {
             </div>
           </div>
           <div className="block_">
-            <div className="smile_">💡</div>
-            <div className="texts_">
+            <div className="smile_">
+              <img src={Lampa} width={48} alt="Error!!!" />
+            </div>
+            <div className="texts_" style={{ marginLeft: "11px" }}>
               <span className="title_">Want to learn more?</span>
               <p className="body_">
                 Type your question in the chat, and I will try to give you the

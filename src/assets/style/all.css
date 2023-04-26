@@ -34,7 +34,12 @@ a {
     max-width: 996px !important;
   }
 }
-
+@media screen and (min-width: 1012px){
+  .container{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 @media screen and (max-width: 768px) {
   .container,
   .container-sm {

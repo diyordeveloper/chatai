@@ -1,7 +1,6 @@
 import React, { ReactNode, createContext, useState, useEffect } from "react";
 interface HistoryProviderProps {
-  folders: any;
-  items: any;
+  folders: any; 
   changeFolderName: any;
   changeItemFolderName: any;
   changeItemName: any;
@@ -28,8 +27,7 @@ interface HistoryProviderProps {
   ChangeFolderClick: (e: any, index: any) => void;
 }
 export const HistoryContext = createContext<HistoryProviderProps>({
-  folders: [],
-  items: [],
+  folders: [], 
   changeFolderName: "",
   changeItemFolderName: "",
   changeItemName: "",
@@ -58,21 +56,7 @@ export const HistoryContext = createContext<HistoryProviderProps>({
 type Props = {
   children: ReactNode;
 };
-export const HistoryProvider = ({ children }: Props) => {
-  const itemsData: any = [
-    {
-      id: 11,
-      you: "one",
-      bot: "This is what a short response from the chatbot looks like",
-      timestamp: "2023-04-23 12:34:04",
-    },
-    {
-      id: 11,
-      you: "one",
-      bot: "This is what a short response from the chatbot looks like",
-      timestamp: "2023-04-23 12:34:04",
-    },
-  ];
+export const HistoryProvider = ({ children }: Props) => { 
   const foldersData: any = [
     {
       id: Math.random(),
@@ -136,15 +120,14 @@ export const HistoryProvider = ({ children }: Props) => {
     },
   ];
 
-  const [folders, setFolders] = useState(foldersData);
-  const [items, setItems] = useState(itemsData);
+  const [folders, setFolders] = useState(foldersData); 
   // ------------- Folders CRUD
   const [changeFolderName, setChangeFolderName] = useState<any>("");
   //   add folder
   function AddFolder() {
     var arr = {
       id: Math.random(),
-      f_title: `Chat Ai questions folder ${folders.length + 1}`,
+      f_title: `Folder Name ${folders.length + 1}`,
       items: [],
     };
     setFolders([arr, ...folders]);
@@ -167,34 +150,40 @@ export const HistoryProvider = ({ children }: Props) => {
   const [changeItemFolderName, setchangeItemFolderName] = useState<any>("");
   function DeleteFolderItemSuccess(folderIndex: any, ItemIndex: any) {
     alert("Delete Folder Item");
-    // const updatedItems = folders[folderIndex].items.filter(
-    //   (person: any) => person.id !== ItemIndex
-    // );
-    // console.log(updatedItems);
-    // setFolders(updatedItems);
+    folders.map(
+      (person: any) =>
+        (person.items = person.items.filter((i: any) => i.id !== ItemIndex))
+    );
+    setDraging([...folders]);
   }
   // Edit
   function ChangeFolderItemSuccess(indexFolder: any, Item: any) {
-    console.log(indexFolder, Item);
-    // var EditFolderItem = folders[indexFolder].items.map((folder: any) =>
-    //   folder.id === Item.id ? { ...folder, you: changeItemFolderName } : folder
-    // );
-    // setFolders((prev:any) => ({...prev, EditFolderItem}))
+    folders.map(
+      (folder: any) =>
+        (folder.items = folder.items.map((i: any) =>
+          i.id === Item.id ? { ...i, you: changeItemFolderName } : i
+        ))
+    );
+    setFolders([...folders]);
   }
   // Feedback Item Crud
   const [changeItemName, setChangeItemName] = useState<any>("");
-  function ChangeItemSuccess(id: any) {
-    var EditItem = items.map((items: any) =>
-      items.id === id.id ? { ...items, you: changeItemName } : items
+  function ChangeItemSuccess(item: any) {
+    folders.map(
+      (folder: any) =>
+        (folder.items = folder.items.map((i: any) =>
+          i.id === item.id ? { ...i, you: changeItemName } : i
+        ))
     );
-    console.log(EditItem);
-
-    setItems(EditItem);
+    setFolders([...folders]);
   }
   function DeleteItemSuccess(ItemIndex: any) {
     alert("Delete Item");
-    const deleteItem = items.filter((person: any) => person.id !== ItemIndex);
-    setItems(deleteItem);
+    folders.map(
+      (person: any) =>
+        (person.items = person.items.filter((i: any) => i.id !== ItemIndex))
+    );
+    setDraging([...folders]);
   }
 
   // DragDrop Item  Folder ------
@@ -262,13 +251,12 @@ export const HistoryProvider = ({ children }: Props) => {
       itm.items = itm.items.filter((person: any) => person.id !== item.id);
     });
     folder.items.push(item);
-    setFolders([...folders]); 
+    setFolders([...folders]);
   }
 
   const history: HistoryProviderProps = {
     folders,
-    changeFolderName,
-    items,
+    changeFolderName, 
     changeItemFolderName,
     changeItemName,
     draging,

@@ -8,13 +8,13 @@ import Folders from "./Folders";
 import "./style.css";
 import "./folders.css";
 function History() {
-  const { folders, items } = useContext(HistoryContext);
+  const { folders } = useContext(HistoryContext);
 
   return (
     <>
       <Layout>
         <AddNewFolter />
-        {items.length === 0 ? <Empty /> : <Folders />}
+        {folders.length === 0 || undefined ? <Empty /> : <Folders />}
 
         <div className="ftr">
           <Footer />

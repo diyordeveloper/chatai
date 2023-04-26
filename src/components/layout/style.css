@@ -113,8 +113,7 @@
   padding: 10px 20px 8px 20px;
   border-radius: 4px;
   text-decoration: none;
-  border: 1px solid var(--border_light);
-  border-bottom: none;
+  border: 1px solid var(--border_light); 
 }
 .add_new_chat span {
   margin-left: 10px;

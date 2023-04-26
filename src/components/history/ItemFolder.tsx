@@ -276,7 +276,7 @@ function ItemFolder({ folderIndex, item, key }: any) {
                   <>
                     <button
                       onClick={() => ChangeNameFolderSuccess(folderIndex, item)}
-                      className="btn_crd"
+                      className="btn_crd mbminus"
                       onMouseEnter={() => setHoveredCheck(true)}
                       onMouseLeave={() => setHoveredCheck(false)}
                     >
@@ -296,7 +296,7 @@ function ItemFolder({ folderIndex, item, key }: any) {
                       onClick={ChangeNameFolder}
                       onMouseEnter={() => setHoveredX(true)}
                       onMouseLeave={() => setHoveredX(false)}
-                      className="btn_crd X"
+                      className="btn_crd X mbminus"
                     >
                       {darkMode ? (
                         <img
@@ -320,7 +320,7 @@ function ItemFolder({ folderIndex, item, key }: any) {
                   onClick={() => DeleteSuccess(folderIndex, item.id)}
                   onMouseEnter={() => setHoveredCheck(true)}
                   onMouseLeave={() => setHoveredCheck(false)}
-                  className="btn_crd"
+                  className="btn_crd  "
                 >
                   {darkMode ? (
                     <img
@@ -338,7 +338,7 @@ function ItemFolder({ folderIndex, item, key }: any) {
                   onClick={DeleteFolder}
                   onMouseEnter={() => setHoveredX(true)}
                   onMouseLeave={() => setHoveredX(false)}
-                  className="btn_crd X"
+                  className="btn_crd X   "
                 >
                   {darkMode ? (
                     <img src={hoveredX ? XHoverDark : XLight} alt="Error..." />

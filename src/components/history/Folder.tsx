@@ -151,9 +151,9 @@ function Folder({ folder, key }: any) {
                         </>
                       ) : (
                         <>
-                          {folder.f_title.length > 16 ? (
+                          {folder.f_title.length > 11 ? (
                             <span>
-                              "{folder.f_title.substring(0, 16)}..." ?
+                              "{folder.f_title.substring(0, 11)}..." ?
                             </span>
                           ) : (
                             <span>"{folder.f_title}" ?</span>
