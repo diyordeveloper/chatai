@@ -14,20 +14,30 @@ import Folder from "./Folder";
 import { HistoryContext } from "./HistoryProvider";
 
 function Folders() {
-  const { folders } = useContext(HistoryContext);
+  const { folders, dragOverHandler, dropHandler, handleDragEnter } =
+    useContext(HistoryContext);
   const { darkMode } = useContext(ThemeContext);
   const lastIndex = folders.length - 1;
+
   return (
     <>
       <div
         className={`container folder_screen ${darkMode ? "folder_dark" : ""}`}
       >
-        {folders.slice(0, -1).map((folder: any, index: any) => (
-          <Folder folder={folder} key={index} />
+        {folders.slice(0, -1).map((folder: any, key: any) => (
+          <Folder folder={folder} key={key} />
         ))}
-        <div className="Feedback_items">
-          {folders[lastIndex].items.map((item: any, index: any) => (
-            <FeedbackItem item={item} key={index} />
+        <div
+          className="Feedback_items"
+          style={{
+            height: `${folders[lastIndex].items.length === 0 ? "50px" : ""}`,
+          }}
+          onDragOver={(e) => dragOverHandler(e)}
+          onDrop={(e) => dropHandler(e, folders[lastIndex])}
+          onDragEnter={(e) => handleDragEnter(e, folders[lastIndex].id)}
+        >
+          {folders[lastIndex].items.map((item: any, key: any) => (
+            <FeedbackItem item={item} key={key} />
           ))}
         </div>
       </div>

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import Router from "./Router";
 import { ThemeContext } from "./components/ThemeProvider";
-import "bootstrap/dist/css/bootstrap.min.css"; 
+import "bootstrap/dist/css/bootstrap.min.css";
 // style
 import "./assets/style/global.css";
 import "./assets/style/all.css";
@@ -15,11 +15,14 @@ function App() {
   `;
   return (
     <>
-      <Theme>
-        <div className={`app ${darkMode ? "app_dark" : ""}`}>
+      <>
+        <div
+          style={{ background: `${COLORS.bgColor}`, color: `${COLORS.text} ` }}
+          className={`app ${darkMode ? "app_dark" : ""}`}
+        >
           <Router />
         </div>
-      </Theme>
+      </>
     </>
   );
 }

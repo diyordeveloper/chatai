@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <BrowserRouter>
-    <UiendPoints>
+    {/* <UiendPoints> */}
       <ThemeProvider>
         <HistoryProvider>
           <ChatProvider>
@@ -21,6 +21,6 @@ root.render(
           </ChatProvider>
         </HistoryProvider>
       </ThemeProvider>
-    </UiendPoints>
+    {/* </UiendPoints> */}
   </BrowserRouter>
 );
