@@ -4,6 +4,7 @@ import Footer from "../layout/Footer";
 import PlusCircleLight from "../../assets/icons/light/PlusCircle.svg";
 import PaperPlaneTilt from "../../assets/icons/light/PaperPlaneTilt.svg";
 import PaperPlaneTiltDark from "../../assets/icons/dark/PaperPlaneTilt.svg";
+import PaperPlaneTiltActive from "../../assets/icons/light/PaperPlaneTiltActive.svg";
 import ArrowsClockwiseDark from "../../assets/icons/dark/ArrowsClockwise.svg";
 import StopLight from "../../assets/icons/light/Stop.svg";
 import { ChatContext } from "./ChatProvider";
@@ -18,6 +19,17 @@ function SubmitText() {
   } = useContext(ChatContext);
   const { darkMode } = useContext(ThemeContext);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isFocused, setIsFocused] = useState(false);
+  const [hoveredPilot, setHoveredPilot] = useState(false);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
+
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
@@ -61,20 +73,31 @@ function SubmitText() {
                 <span>New </span>
                 <span>chat</span>
               </div>
-              { isOnline ? (
+              {isOnline ? (
                 <div className="send_msg">
                   <input
                     type="text"
                     value={submitText}
                     onChange={(e) => setSubmitText(e.target.value)}
                     onKeyPress={handleKeyPress}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
                     placeholder="Send a message..."
                     className="msg_"
                   />
-                  <div className="send_" onClick={SendMesssage}>
+                  <div
+                    className={`send_ ${isFocused ? "send_focus" : ""}`}
+                    onClick={SendMesssage}
+                  >
                     <img
-                      src={darkMode ? PaperPlaneTiltDark : PaperPlaneTilt}
-                      className="sendImg"
+                    onMouseEnter={() => setHoveredPilot(true)}
+                    onMouseLeave={() => setHoveredPilot(false)}
+                      src={hoveredPilot? PaperPlaneTiltActive: isFocused
+                        ? PaperPlaneTiltActive
+                        : darkMode
+                        ? PaperPlaneTiltDark
+                        : PaperPlaneTilt}
+                      className={`sendImg ${isFocused ? "sendImgActive" : ""} `}
                       alt="Error!"
                     />
                   </div>
@@ -89,7 +112,10 @@ function SubmitText() {
                   />
                   <div className="send_ ">
                     <img
-                      src={darkMode ? PaperPlaneTiltDark : PaperPlaneTilt}
+                      src={ darkMode
+                          ? PaperPlaneTiltDark
+                          : PaperPlaneTilt
+                      }
                       className="sendImg"
                       alt="Error!"
                     />
@@ -97,7 +123,7 @@ function SubmitText() {
                 </div>
               )}
               <>
-                { isOnline ? (
+                {isOnline ? (
                   <>
                     {generateRes ? (
                       <div className="render_btns">

@@ -18,7 +18,7 @@ function DisabledHistoryChat() {
   return (
     <>
       <Layout>
-        <div className={`new_chat  ${darkMode ? "new_chat_dark" : ""}`}>
+        <div className={`disabledHistoryChat new_chat  ${darkMode ? "new_chat_dark" : ""}`}>
           <div className="chat_ chat_you">
             <div className="container">
               <div className="content_">

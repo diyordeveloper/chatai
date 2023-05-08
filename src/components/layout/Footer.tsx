@@ -9,8 +9,8 @@ function Footer() {
         className="text-center"
         // onClick={toggleTheme}
       >
-        <span className={darkMode ? "foter_text" : ""}>powered by</span>{" "}
-        <a href="https://bot.co" target="_blank">
+        <span className={"foter_text"}>powered by</span> 
+        <a href="https://bot.co" target="_blank">{" "}
           bot.co
         </a>
       </p>

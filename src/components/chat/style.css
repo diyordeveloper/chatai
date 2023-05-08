@@ -68,7 +68,7 @@
 }
 .option_div {
   padding: 6px 8px;
-  
+
   border-radius: 4px;
 }
 .option_div:hover {
@@ -105,11 +105,9 @@
   background: var(--border_dark);
 }
 .rotate_one {
-  
   transform: rotate(180deg);
 }
 .rotate_two {
-  
   transform: rotate(0deg);
 }
 @media screen and (max-width: 576px) {
@@ -161,10 +159,10 @@
   font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.04em;
-  color: var(--df_txt); 
+  color: var(--df_txt);
 }
-.mt16{
-  margin-top: 16px ;
+.mt16 {
+  margin-top: 16px;
 }
 .texts_ .body_ {
   font-family: NotoSansRegular;
@@ -197,9 +195,8 @@
   letter-spacing: -0.04em;
   display: flex;
   align-items: center;
-  
 }
-.btn_update span:nth-child(1){
+.btn_update span:nth-child(1) {
   margin-right: 10px;
 }
 .btn_update:hover {
@@ -239,10 +236,9 @@
 @media screen and (max-height: 888px) {
   .suggections {
     margin-top: 10px;
-  } 
+  }
 }
 @media screen and (max-width: 576px) {
-  
   .suggections_mob {
     display: block;
   }
@@ -277,7 +273,6 @@
   border-radius: 4px;
   padding: 12px;
   cursor: pointer;
-  
 }
 .Submit_dev_dark .generate_btns_ .btn_gnrt {
   border-color: var(--border_dark);
@@ -314,12 +309,10 @@
 .add_chat {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 12px;
+  padding: 13px;
   border: 1px solid var(--border_light);
   cursor: pointer;
   border-radius: 4px;
-  
 }
 .add_chat:hover {
   background: var(--hover_gray);
@@ -335,7 +328,7 @@
   border: 1px solid var(--border_light);
   cursor: pointer;
   border-radius: 4px;
-  
+
   margin-left: 4px;
 }
 .stop_btn {
@@ -346,7 +339,7 @@
   border: 1px solid var(--border_light);
   cursor: pointer;
   border-radius: 4px;
-  
+
   margin-left: 4px;
 }
 
@@ -360,6 +353,7 @@
 .add_chat span {
   color: var(--df_txt);
   margin-left: 10px;
+  font-size: 14px;
 }
 .send_msg {
   display: flex;
@@ -373,42 +367,69 @@
   outline: none;
   background: none;
   border: none;
-  border: 1px solid var(--border_light); 
+  border: 1px solid var(--border_light);
   border-radius: 4px 0 0 4px;
   border-right: none;
   font-size: 14px;
   line-height: 20px;
 }
+.send_msg .msg_:focus {
+  border: 1px solid #b6b6ce;
+  border-right: none;
+}
+.Submit_dev_dark .send_msg .msg_:focus {
+  border: 1px solid #7c7c8b;
+  border-right: none;
+}
+
 .msg_::placeholder {
   color: var(--mini_text);
   font-size: 14px;
   line-height: 20px;
 }
-.send_msg_ofline{
+.send_msg_ofline {
   border: none;
-  border: 1px solid #9F9FA6; 
+  border: 1px solid #9f9fa6;
   border-radius: 4px;
-  background:#E2E2E2;
+  background: #e2e2e2;
 }
-.send_msg_ofline
-.msg_ofline::placeholder {
-  color: var(--mini_text); 
+.send_msg_ofline .msg_ofline::placeholder {
+  color: var(--mini_text);
 }
-.Submit_dev_dark .send_msg_ofline{
-  border: 1px solid #72727D; 
-  background:#62636B;
-
+.Submit_dev_dark .send_msg_ofline {
+  border: 1px solid #72727d;
+  background: #62636b;
 }
 .send_ {
   cursor: pointer;
   border: 1px solid var(--border_light);
-  border-left: none;
+  border-left: none !important;
   border-radius: 0 4px 4px 0;
 }
 .send_msg .sendImg {
-  margin: 14px;
+  margin: 6px;
+  padding: 8px;
+  border-radius: 4px;
 }
 
+.send_msg .sendImg:hover {
+  background: #e2e2ec;
+}
+.Submit_dev_dark .send_msg .sendImg:hover {
+  background: #5a5c6d;
+}
+.send_msg .sendImg.sendImgActive {
+  background: #e2e2ec;
+}
+.Submit_dev_dark .send_msg .sendImg.sendImgActive {
+  background: #5a5c6d;
+}
+.send_.send_focus {
+  border: 1px solid #b6b6ce;
+}
+.Submit_dev_dark .send_.send_focus {
+  border: 1px solid #7c7c8b;
+}
 .Submit_dev_dark .send_,
 .Submit_dev_dark .add_chat,
 .Submit_dev_dark .msg_,

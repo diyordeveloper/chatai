@@ -73,8 +73,8 @@ function Header() {
                 darkMode ? "stng_btn_dark" : "stng_btn_light"
               }`}
             >
-              {/* <img src={GearSixDark} alt="Error" /> */}
-              <GearSixDark />
+              {/* <img src={GearSixDark} alt="Error" /> */} 
+               <> <GearSixDark /> </>
             </NavLink>
           </div>
         </div>

@@ -109,8 +109,8 @@
 .row_ .txt_sm {
   width: 201px;
   font-size: 14px;
-line-height: 20px; 
-letter-spacing: -0.04em;
+  line-height: 20px;
+  letter-spacing: -0.04em;
 }
 .row_ {
   margin-top: 12px;
@@ -134,6 +134,10 @@ letter-spacing: -0.04em;
   background: transparent;
   color: var(--df_dark_txt);
 }
+.body_dev .btn_update {
+  background: var(--bg);
+  margin-top: 40px;
+}
 @media screen and (max-width: 576px) {
   .mode_row {
     justify-content: space-between;
@@ -141,29 +145,4 @@ letter-spacing: -0.04em;
   .row_ {
     justify-content: space-between;
   }
-}
-/* settings footer ------------ */
-.footer_dev {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  display: flex;
-  justify-content: end;
-}
-.footer_dev .btn_update {
-  margin: 54px 0;
-  border: none;
-  background: var(--bg);
-  border-radius: 4px;
-  padding: 12px;
-  outline: none;
-  color: #fff;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.04em; 
-}
-.footer_dev .btn_update:hover{
-  /* background: var(--hover_gray); */
 }

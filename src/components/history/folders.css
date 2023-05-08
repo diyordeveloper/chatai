@@ -193,7 +193,8 @@
 
 .item {
   margin: 8px;
-  padding: 4px 12px;
+  padding: 0px 12px;
+  height: 36px;
   border: 1px solid var(--border_light);
   border-radius: 4px;
   display: flex;

@@ -154,13 +154,13 @@
     padding: 20px 0  !important;
   } 
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 1000px) {
   .bot_block {
     flex-direction: column;
   }
   .blok_two {
     margin-top: 14px;
-    justify-content: end;
+    justify-content: end !important;
   }
   .answer_code {
     margin-top: 4px;

@@ -9,10 +9,10 @@ import "./assets/style/all.css";
 
 function App() {
   const { COLORS, darkMode } = useContext(ThemeContext);
-  const Theme = styled.body`
-    background: ${COLORS.bgColor};
-    color: ${COLORS.text} !important;
-  `;
+  // const Theme = styled.body`
+  //   background: ${COLORS.bgColor};
+  //   color: ${COLORS.text} !important;
+  // `;
   return (
     <>
       <>

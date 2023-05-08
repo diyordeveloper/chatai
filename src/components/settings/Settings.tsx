@@ -131,8 +131,6 @@ function Settings() {
               />
             </div>
           </div>
-        </div>
-        <div className="container footer_dev">
           <button className="btn_update" ref={buttonRef} onClick={SaveChanges}>
             Save settings
           </button>
