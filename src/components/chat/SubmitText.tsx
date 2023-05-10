@@ -71,7 +71,7 @@ function SubmitText() {
             <div className="chat_block">
               <div className="add_chat" onClick={NewChat}>
                 <img src={PlusCircleLight} alt="Error!" />
-                <span>New </span>
+                <span className="sp_">New {" "}</span>
                 <span>chat</span>
               </div>
               {isOnline ? (

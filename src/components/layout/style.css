@@ -121,9 +121,11 @@
   text-decoration: none;
   border: 1px solid var(--border_light);
 }
-.add_new_chat span {
-  margin-left: 10px;
+.add_new_chat span { 
   font-size: 14px;
+}
+.add_new_chat .sp_ {
+  margin: 0 5px 0 10px;
 }
 .add_new_chat.dark_btn {
   border: 1px solid var(--border_dark);

@@ -256,7 +256,10 @@
 }
 .add_chat span {
   color: var(--df_txt);
-  margin-left: 10px;
+  font-size: 14px;
+}
+.add_chat .sp_  {
+  margin: 0 5px 0 10px ;
 }
 .send_msg {
   display: flex;

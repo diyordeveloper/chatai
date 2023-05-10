@@ -353,8 +353,10 @@
 }
 .add_chat span {
   color: var(--df_txt);
-  margin-left: 10px;
   font-size: 14px;
+}
+.add_chat .sp_ {
+  margin: 0 5px 0 10px;
 }
 .send_msg {
   display: flex;
@@ -374,11 +376,11 @@
   font-size: 14px;
   line-height: 20px;
 }
-.send_msg .msg_.msg_Active{
+.send_msg .msg_.msg_Active {
   border: 1px solid #b6b6ce;
   border-right: none;
 }
-.Submit_dev_dark .send_msg .msg_.msg_Active{
+.Submit_dev_dark .send_msg .msg_.msg_Active {
   border: 1px solid #7c7c8b;
   border-right: none;
 }

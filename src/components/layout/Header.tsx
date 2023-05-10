@@ -61,7 +61,7 @@ function Header() {
                 }`}
               >
                 <img src={PlusCircleLight} alt="Error" />
-                <span>New </span>
+                <span className="sp_">New</span>
                 <span>chat</span>
               </NavLink>
             </div>

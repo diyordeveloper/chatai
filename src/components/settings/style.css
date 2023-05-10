@@ -138,6 +138,9 @@
   background: var(--bg);
   margin-top: 40px;
 }
+.body_dev .btn_update:hover{
+  background: #B6B6CE;
+}
 @media screen and (max-width: 576px) {
   .mode_row {
     justify-content: space-between;
