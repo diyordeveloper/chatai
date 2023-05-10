@@ -184,6 +184,7 @@
   background: var(--primary_bg);
 }
 .btn_update {
+  cursor: pointer;
   border: none;
   background: var(--success);
   border-radius: 4px;
@@ -373,6 +374,14 @@
   font-size: 14px;
   line-height: 20px;
 }
+.send_msg .msg_.msg_Active{
+  border: 1px solid #b6b6ce;
+  border-right: none;
+}
+.Submit_dev_dark .send_msg .msg_.msg_Active{
+  border: 1px solid #7c7c8b;
+  border-right: none;
+}
 .send_msg .msg_:focus {
   border: 1px solid #b6b6ce;
   border-right: none;
@@ -412,16 +421,16 @@
   border-radius: 4px;
 }
 
-.send_msg .sendImg:hover {
+/* .send_msg .sendImg:hover {
   background: #e2e2ec;
-}
-.Submit_dev_dark .send_msg .sendImg:hover {
+} */
+/* .Submit_dev_dark .send_msg .sendImg:hover {
   background: #5a5c6d;
-}
-.send_msg .sendImg.sendImgActive {
+} */
+.send_msg .sendImg.sendImgActive:hover {
   background: #e2e2ec;
 }
-.Submit_dev_dark .send_msg .sendImg.sendImgActive {
+.Submit_dev_dark .send_msg .sendImg.sendImgActive:hover {
   background: #5a5c6d;
 }
 .send_.send_focus {

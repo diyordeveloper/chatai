@@ -29,6 +29,7 @@ function SubmitText() {
   const handleBlur = () => {
     setIsFocused(false);
   };
+  const [hoveredInput, setHoveredInput] = useState<any>(false);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -74,7 +75,11 @@ function SubmitText() {
                 <span>chat</span>
               </div>
               {isOnline ? (
-                <div className="send_msg">
+                <div
+                  className="send_msg"
+                  onMouseEnter={() => setHoveredInput(true)}
+                  onMouseLeave={() => setHoveredInput(false)}
+                >
                   <input
                     type="text"
                     value={submitText}
@@ -83,21 +88,39 @@ function SubmitText() {
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                     placeholder="Send a message..."
-                    className="msg_"
+                    className={`msg_ ${hoveredInput ? "msg_Active" : ""}`}
                   />
                   <div
-                    className={`send_ ${isFocused ? "send_focus" : ""}`}
+                    className={`send_ ${isFocused ? "send_focus" : ""} ${
+                      hoveredInput ? "send_focus" : ""
+                    }`}
                     onClick={SendMesssage}
                   >
                     <img
-                    onMouseEnter={() => setHoveredPilot(true)}
-                    onMouseLeave={() => setHoveredPilot(false)}
-                      src={hoveredPilot? PaperPlaneTiltActive: isFocused
-                        ? PaperPlaneTiltActive
-                        : darkMode
-                        ? PaperPlaneTiltDark
-                        : PaperPlaneTilt}
-                      className={`sendImg ${isFocused ? "sendImgActive" : ""} `}
+                      onMouseEnter={() => setHoveredPilot(true)}
+                      onMouseLeave={() => setHoveredPilot(false)}
+                      src={
+                        submitText != ""
+                          ? isFocused
+                            ? hoveredPilot
+                              ? PaperPlaneTiltActive
+                              : darkMode
+                              ? PaperPlaneTiltDark
+                              : PaperPlaneTilt
+                            : darkMode
+                            ? PaperPlaneTiltDark
+                            : PaperPlaneTilt
+                          : darkMode
+                          ? PaperPlaneTiltDark
+                          : PaperPlaneTilt
+                      }
+                      className={`sendImg ${
+                        submitText != ""
+                          ? isFocused
+                            ? "sendImgActive"
+                            : ""
+                          : ""
+                      } `}
                       alt="Error!"
                     />
                   </div>
@@ -112,10 +135,7 @@ function SubmitText() {
                   />
                   <div className="send_ ">
                     <img
-                      src={ darkMode
-                          ? PaperPlaneTiltDark
-                          : PaperPlaneTilt
-                      }
+                      src={darkMode ? PaperPlaneTiltDark : PaperPlaneTilt}
                       className="sendImg"
                       alt="Error!"
                     />
