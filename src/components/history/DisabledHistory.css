@@ -253,14 +253,7 @@
 .Submit_dev_dark .render_btn:hover,
 .Submit_dev_dark .stop_btn:hover {
   background: var(--active_bg);
-}
-.add_chat span {
-  color: var(--df_txt);
-  font-size: 14px;
-}
-.add_chat .sp_  {
-  margin: 0 5px 0 10px ;
-}
+} 
 .send_msg {
   display: flex;
   align-items: center;

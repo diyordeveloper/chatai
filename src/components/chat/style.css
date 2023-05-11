@@ -314,6 +314,7 @@
   border: 1px solid var(--border_light);
   cursor: pointer;
   border-radius: 4px;
+  min-width: 126px;
 }
 .add_chat:hover {
   background: var(--hover_gray);
@@ -339,8 +340,7 @@
   padding: 14px;
   border: 1px solid var(--border_light);
   cursor: pointer;
-  border-radius: 4px;
-
+  border-radius: 4px; 
   margin-left: 4px;
 }
 
@@ -354,10 +354,8 @@
 .add_chat span {
   color: var(--df_txt);
   font-size: 14px;
-}
-.add_chat .sp_ {
-  margin: 0 5px 0 10px;
-}
+  margin: 0 0 0 10px;
+} 
 .send_msg {
   display: flex;
   align-items: center;
